@@ -1,0 +1,1543 @@
+
+LED-Streifenmatrix.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000006  00800100  00000af4  00000b88  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000af4  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000001e  00800106  00800106  00000b8e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000b8e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000bc0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000f8  00000000  00000000  00000c00  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000023bc  00000000  00000000  00000cf8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000c64  00000000  00000000  000030b4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000c8a  00000000  00000000  00003d18  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000364  00000000  00000000  000049a4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000ada  00000000  00000000  00004d08  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00001534  00000000  00000000  000057e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000d8  00000000  00000000  00006d16  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 36 00 	jmp	0x6c	; 0x6c <__dtors_end>
+   4:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+   8:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+   c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  10:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  14:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  18:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  1c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  20:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  24:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  28:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  2c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  30:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  34:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  38:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  3c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  40:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  44:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  48:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  4c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  50:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  54:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  58:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  5c:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  60:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+  64:	0c 94 5e 00 	jmp	0xbc	; 0xbc <__bad_interrupt>
+
+00000068 <__ctors_start>:
+  68:	38 04       	cpc	r3, r8
+
+0000006a <__ctors_end>:
+  6a:	3f 04       	cpc	r3, r15
+
+0000006c <__dtors_end>:
+  6c:	11 24       	eor	r1, r1
+  6e:	1f be       	out	0x3f, r1	; 63
+  70:	cf ef       	ldi	r28, 0xFF	; 255
+  72:	d4 e0       	ldi	r29, 0x04	; 4
+  74:	de bf       	out	0x3e, r29	; 62
+  76:	cd bf       	out	0x3d, r28	; 61
+
+00000078 <__do_clear_bss>:
+  78:	21 e0       	ldi	r18, 0x01	; 1
+  7a:	a6 e0       	ldi	r26, 0x06	; 6
+  7c:	b1 e0       	ldi	r27, 0x01	; 1
+  7e:	01 c0       	rjmp	.+2      	; 0x82 <.do_clear_bss_start>
+
+00000080 <.do_clear_bss_loop>:
+  80:	1d 92       	st	X+, r1
+
+00000082 <.do_clear_bss_start>:
+  82:	a4 32       	cpi	r26, 0x24	; 36
+  84:	b2 07       	cpc	r27, r18
+  86:	e1 f7       	brne	.-8      	; 0x80 <.do_clear_bss_loop>
+
+00000088 <__do_copy_data>:
+  88:	11 e0       	ldi	r17, 0x01	; 1
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	e4 ef       	ldi	r30, 0xF4	; 244
+  90:	fa e0       	ldi	r31, 0x0A	; 10
+  92:	02 c0       	rjmp	.+4      	; 0x98 <__do_copy_data+0x10>
+  94:	05 90       	lpm	r0, Z+
+  96:	0d 92       	st	X+, r0
+  98:	a6 30       	cpi	r26, 0x06	; 6
+  9a:	b1 07       	cpc	r27, r17
+  9c:	d9 f7       	brne	.-10     	; 0x94 <__do_copy_data+0xc>
+
+0000009e <__do_global_ctors>:
+  9e:	10 e0       	ldi	r17, 0x00	; 0
+  a0:	c5 e3       	ldi	r28, 0x35	; 53
+  a2:	d0 e0       	ldi	r29, 0x00	; 0
+  a4:	04 c0       	rjmp	.+8      	; 0xae <__do_global_ctors+0x10>
+  a6:	21 97       	sbiw	r28, 0x01	; 1
+  a8:	fe 01       	movw	r30, r28
+  aa:	0e 94 46 04 	call	0x88c	; 0x88c <__tablejump2__>
+  ae:	c4 33       	cpi	r28, 0x34	; 52
+  b0:	d1 07       	cpc	r29, r17
+  b2:	c9 f7       	brne	.-14     	; 0xa6 <__do_global_ctors+0x8>
+  b4:	0e 94 bb 03 	call	0x776	; 0x776 <main>
+  b8:	0c 94 6d 05 	jmp	0xada	; 0xada <__do_global_dtors>
+
+000000bc <__bad_interrupt>:
+  bc:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000c0 <time>:
+  c0:	fc 01       	movw	r30, r24
+  c2:	0f b6       	in	r0, 0x3f	; 63
+  c4:	f8 94       	cli
+  c6:	60 91 20 01 	lds	r22, 0x0120	; 0x800120 <__system_time>
+  ca:	70 91 21 01 	lds	r23, 0x0121	; 0x800121 <__system_time+0x1>
+  ce:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <__system_time+0x2>
+  d2:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <__system_time+0x3>
+  d6:	0f be       	out	0x3f, r0	; 63
+  d8:	30 97       	sbiw	r30, 0x00	; 0
+  da:	21 f0       	breq	.+8      	; 0xe4 <time+0x24>
+  dc:	60 83       	st	Z, r22
+  de:	71 83       	std	Z+1, r23	; 0x01
+  e0:	82 83       	std	Z+2, r24	; 0x02
+  e2:	93 83       	std	Z+3, r25	; 0x03
+  e4:	08 95       	ret
+
+000000e6 <_ZN15AdafruitMyPixelD1Ev>:
+  @return  Brightness value: 0 = minimum (off), 255 = maximum.
+*/
+uint8_t AdafruitMyPixel::getBrightness(void) const
+{
+	return brightness - 1;
+}
+  e6:	cf 93       	push	r28
+  e8:	df 93       	push	r29
+  ea:	ec 01       	movw	r28, r24
+  ec:	89 85       	ldd	r24, Y+9	; 0x09
+  ee:	9a 85       	ldd	r25, Y+10	; 0x0a
+  f0:	0e 94 e4 04 	call	0x9c8	; 0x9c8 <free>
+  f4:	8e 81       	ldd	r24, Y+6	; 0x06
+  f6:	9f 81       	ldd	r25, Y+7	; 0x07
+  f8:	88 30       	cpi	r24, 0x08	; 8
+  fa:	91 05       	cpc	r25, r1
+  fc:	7c f0       	brlt	.+30     	; 0x11c <_ZN15AdafruitMyPixelD1Ev+0x36>
+  fe:	44 b1       	in	r20, 0x04	; 4
+ 100:	08 97       	sbiw	r24, 0x08	; 8
+ 102:	21 e0       	ldi	r18, 0x01	; 1
+ 104:	30 e0       	ldi	r19, 0x00	; 0
+ 106:	b9 01       	movw	r22, r18
+ 108:	02 c0       	rjmp	.+4      	; 0x10e <_ZN15AdafruitMyPixelD1Ev+0x28>
+ 10a:	66 0f       	add	r22, r22
+ 10c:	77 1f       	adc	r23, r23
+ 10e:	8a 95       	dec	r24
+ 110:	e2 f7       	brpl	.-8      	; 0x10a <_ZN15AdafruitMyPixelD1Ev+0x24>
+ 112:	cb 01       	movw	r24, r22
+ 114:	80 95       	com	r24
+ 116:	84 23       	and	r24, r20
+ 118:	84 b9       	out	0x04, r24	; 4
+ 11a:	0f c0       	rjmp	.+30     	; 0x13a <_ZN15AdafruitMyPixelD1Ev+0x54>
+ 11c:	99 23       	and	r25, r25
+ 11e:	6c f0       	brlt	.+26     	; 0x13a <_ZN15AdafruitMyPixelD1Ev+0x54>
+ 120:	4a b1       	in	r20, 0x0a	; 10
+ 122:	21 e0       	ldi	r18, 0x01	; 1
+ 124:	30 e0       	ldi	r19, 0x00	; 0
+ 126:	b9 01       	movw	r22, r18
+ 128:	02 c0       	rjmp	.+4      	; 0x12e <_ZN15AdafruitMyPixelD1Ev+0x48>
+ 12a:	66 0f       	add	r22, r22
+ 12c:	77 1f       	adc	r23, r23
+ 12e:	8a 95       	dec	r24
+ 130:	e2 f7       	brpl	.-8      	; 0x12a <_ZN15AdafruitMyPixelD1Ev+0x44>
+ 132:	cb 01       	movw	r24, r22
+ 134:	80 95       	com	r24
+ 136:	84 23       	and	r24, r20
+ 138:	8a b9       	out	0x0a, r24	; 10
+ 13a:	df 91       	pop	r29
+ 13c:	cf 91       	pop	r28
+ 13e:	08 95       	ret
+
+00000140 <_ZN15AdafruitMyPixel5beginEv>:
+ 140:	fc 01       	movw	r30, r24
+ 142:	26 81       	ldd	r18, Z+6	; 0x06
+ 144:	37 81       	ldd	r19, Z+7	; 0x07
+ 146:	28 30       	cpi	r18, 0x08	; 8
+ 148:	31 05       	cpc	r19, r1
+ 14a:	e4 f0       	brlt	.+56     	; 0x184 <_ZN15AdafruitMyPixel5beginEv+0x44>
+ 14c:	44 b1       	in	r20, 0x04	; 4
+ 14e:	28 50       	subi	r18, 0x08	; 8
+ 150:	31 09       	sbc	r19, r1
+ 152:	81 e0       	ldi	r24, 0x01	; 1
+ 154:	90 e0       	ldi	r25, 0x00	; 0
+ 156:	bc 01       	movw	r22, r24
+ 158:	02 c0       	rjmp	.+4      	; 0x15e <_ZN15AdafruitMyPixel5beginEv+0x1e>
+ 15a:	66 0f       	add	r22, r22
+ 15c:	77 1f       	adc	r23, r23
+ 15e:	2a 95       	dec	r18
+ 160:	e2 f7       	brpl	.-8      	; 0x15a <_ZN15AdafruitMyPixel5beginEv+0x1a>
+ 162:	9b 01       	movw	r18, r22
+ 164:	24 2b       	or	r18, r20
+ 166:	24 b9       	out	0x04, r18	; 4
+ 168:	25 b1       	in	r18, 0x05	; 5
+ 16a:	46 81       	ldd	r20, Z+6	; 0x06
+ 16c:	57 81       	ldd	r21, Z+7	; 0x07
+ 16e:	48 50       	subi	r20, 0x08	; 8
+ 170:	51 09       	sbc	r21, r1
+ 172:	02 c0       	rjmp	.+4      	; 0x178 <_ZN15AdafruitMyPixel5beginEv+0x38>
+ 174:	88 0f       	add	r24, r24
+ 176:	99 1f       	adc	r25, r25
+ 178:	4a 95       	dec	r20
+ 17a:	e2 f7       	brpl	.-8      	; 0x174 <_ZN15AdafruitMyPixel5beginEv+0x34>
+ 17c:	80 95       	com	r24
+ 17e:	82 23       	and	r24, r18
+ 180:	85 b9       	out	0x05, r24	; 5
+ 182:	18 c0       	rjmp	.+48     	; 0x1b4 <_ZN15AdafruitMyPixel5beginEv+0x74>
+ 184:	33 23       	and	r19, r19
+ 186:	b4 f0       	brlt	.+44     	; 0x1b4 <_ZN15AdafruitMyPixel5beginEv+0x74>
+ 188:	4a b1       	in	r20, 0x0a	; 10
+ 18a:	81 e0       	ldi	r24, 0x01	; 1
+ 18c:	90 e0       	ldi	r25, 0x00	; 0
+ 18e:	bc 01       	movw	r22, r24
+ 190:	02 c0       	rjmp	.+4      	; 0x196 <_ZN15AdafruitMyPixel5beginEv+0x56>
+ 192:	66 0f       	add	r22, r22
+ 194:	77 1f       	adc	r23, r23
+ 196:	2a 95       	dec	r18
+ 198:	e2 f7       	brpl	.-8      	; 0x192 <_ZN15AdafruitMyPixel5beginEv+0x52>
+ 19a:	9b 01       	movw	r18, r22
+ 19c:	24 2b       	or	r18, r20
+ 19e:	2a b9       	out	0x0a, r18	; 10
+ 1a0:	2b b1       	in	r18, 0x0b	; 11
+ 1a2:	06 80       	ldd	r0, Z+6	; 0x06
+ 1a4:	02 c0       	rjmp	.+4      	; 0x1aa <_ZN15AdafruitMyPixel5beginEv+0x6a>
+ 1a6:	88 0f       	add	r24, r24
+ 1a8:	99 1f       	adc	r25, r25
+ 1aa:	0a 94       	dec	r0
+ 1ac:	e2 f7       	brpl	.-8      	; 0x1a6 <_ZN15AdafruitMyPixel5beginEv+0x66>
+ 1ae:	80 95       	com	r24
+ 1b0:	82 23       	and	r24, r18
+ 1b2:	8b b9       	out	0x0b, r24	; 11
+ 1b4:	81 e0       	ldi	r24, 0x01	; 1
+ 1b6:	81 83       	std	Z+1, r24	; 0x01
+ 1b8:	08 95       	ret
+
+000001ba <_ZN15AdafruitMyPixel12updateLengthEj>:
+ 1ba:	0f 93       	push	r16
+ 1bc:	1f 93       	push	r17
+ 1be:	cf 93       	push	r28
+ 1c0:	df 93       	push	r29
+ 1c2:	ec 01       	movw	r28, r24
+ 1c4:	8b 01       	movw	r16, r22
+ 1c6:	89 85       	ldd	r24, Y+9	; 0x09
+ 1c8:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 1ca:	0e 94 e4 04 	call	0x9c8	; 0x9c8 <free>
+ 1ce:	c8 01       	movw	r24, r16
+ 1d0:	88 0f       	add	r24, r24
+ 1d2:	99 1f       	adc	r25, r25
+ 1d4:	9d 83       	std	Y+5, r25	; 0x05
+ 1d6:	8c 83       	std	Y+4, r24	; 0x04
+ 1d8:	0e 94 4c 04 	call	0x898	; 0x898 <malloc>
+ 1dc:	9a 87       	std	Y+10, r25	; 0x0a
+ 1de:	89 87       	std	Y+9, r24	; 0x09
+ 1e0:	89 2b       	or	r24, r25
+ 1e2:	19 f0       	breq	.+6      	; 0x1ea <_ZN15AdafruitMyPixel12updateLengthEj+0x30>
+ 1e4:	1b 83       	std	Y+3, r17	; 0x03
+ 1e6:	0a 83       	std	Y+2, r16	; 0x02
+ 1e8:	04 c0       	rjmp	.+8      	; 0x1f2 <_ZN15AdafruitMyPixel12updateLengthEj+0x38>
+ 1ea:	1d 82       	std	Y+5, r1	; 0x05
+ 1ec:	1c 82       	std	Y+4, r1	; 0x04
+ 1ee:	1b 82       	std	Y+3, r1	; 0x03
+ 1f0:	1a 82       	std	Y+2, r1	; 0x02
+ 1f2:	df 91       	pop	r29
+ 1f4:	cf 91       	pop	r28
+ 1f6:	1f 91       	pop	r17
+ 1f8:	0f 91       	pop	r16
+ 1fa:	08 95       	ret
+
+000001fc <_ZN15AdafruitMyPixel10updateTypeEj>:
+ 1fc:	fc 01       	movw	r30, r24
+ 1fe:	96 85       	ldd	r25, Z+14	; 0x0e
+ 200:	83 85       	ldd	r24, Z+11	; 0x0b
+ 202:	31 e0       	ldi	r19, 0x01	; 1
+ 204:	98 13       	cpse	r25, r24
+ 206:	30 e0       	ldi	r19, 0x00	; 0
+ 208:	cb 01       	movw	r24, r22
+ 20a:	00 24       	eor	r0, r0
+ 20c:	88 0f       	add	r24, r24
+ 20e:	99 1f       	adc	r25, r25
+ 210:	00 1c       	adc	r0, r0
+ 212:	88 0f       	add	r24, r24
+ 214:	99 1f       	adc	r25, r25
+ 216:	00 1c       	adc	r0, r0
+ 218:	89 2f       	mov	r24, r25
+ 21a:	90 2d       	mov	r25, r0
+ 21c:	28 2f       	mov	r18, r24
+ 21e:	23 70       	andi	r18, 0x03	; 3
+ 220:	26 87       	std	Z+14, r18	; 0x0e
+ 222:	cb 01       	movw	r24, r22
+ 224:	92 95       	swap	r25
+ 226:	82 95       	swap	r24
+ 228:	8f 70       	andi	r24, 0x0F	; 15
+ 22a:	89 27       	eor	r24, r25
+ 22c:	9f 70       	andi	r25, 0x0F	; 15
+ 22e:	89 27       	eor	r24, r25
+ 230:	83 70       	andi	r24, 0x03	; 3
+ 232:	83 87       	std	Z+11, r24	; 0x0b
+ 234:	ab 01       	movw	r20, r22
+ 236:	56 95       	lsr	r21
+ 238:	47 95       	ror	r20
+ 23a:	56 95       	lsr	r21
+ 23c:	47 95       	ror	r20
+ 23e:	43 70       	andi	r20, 0x03	; 3
+ 240:	44 87       	std	Z+12, r20	; 0x0c
+ 242:	96 2f       	mov	r25, r22
+ 244:	93 70       	andi	r25, 0x03	; 3
+ 246:	95 87       	std	Z+13, r25	; 0x0d
+ 248:	91 e0       	ldi	r25, 0x01	; 1
+ 24a:	6f 3f       	cpi	r22, 0xFF	; 255
+ 24c:	71 05       	cpc	r23, r1
+ 24e:	11 f0       	breq	.+4      	; 0x254 <__EEPROM_REGION_LENGTH__+0x54>
+ 250:	08 f0       	brcs	.+2      	; 0x254 <__EEPROM_REGION_LENGTH__+0x54>
+ 252:	90 e0       	ldi	r25, 0x00	; 0
+ 254:	90 83       	st	Z, r25
+ 256:	41 85       	ldd	r20, Z+9	; 0x09
+ 258:	52 85       	ldd	r21, Z+10	; 0x0a
+ 25a:	45 2b       	or	r20, r21
+ 25c:	51 f0       	breq	.+20     	; 0x272 <__EEPROM_REGION_LENGTH__+0x72>
+ 25e:	91 e0       	ldi	r25, 0x01	; 1
+ 260:	28 13       	cpse	r18, r24
+ 262:	90 e0       	ldi	r25, 0x00	; 0
+ 264:	39 17       	cp	r19, r25
+ 266:	29 f0       	breq	.+10     	; 0x272 <__EEPROM_REGION_LENGTH__+0x72>
+ 268:	cf 01       	movw	r24, r30
+ 26a:	62 81       	ldd	r22, Z+2	; 0x02
+ 26c:	73 81       	ldd	r23, Z+3	; 0x03
+ 26e:	0e 94 dd 00 	call	0x1ba	; 0x1ba <_ZN15AdafruitMyPixel12updateLengthEj>
+ 272:	08 95       	ret
+
+00000274 <_ZN15AdafruitMyPixel4showEv>:
+ 274:	af 92       	push	r10
+ 276:	bf 92       	push	r11
+ 278:	cf 92       	push	r12
+ 27a:	df 92       	push	r13
+ 27c:	ef 92       	push	r14
+ 27e:	ff 92       	push	r15
+ 280:	0f 93       	push	r16
+ 282:	1f 93       	push	r17
+ 284:	cf 93       	push	r28
+ 286:	df 93       	push	r29
+ 288:	cd b7       	in	r28, 0x3d	; 61
+ 28a:	de b7       	in	r29, 0x3e	; 62
+ 28c:	2b 97       	sbiw	r28, 0x0b	; 11
+ 28e:	0f b6       	in	r0, 0x3f	; 63
+ 290:	f8 94       	cli
+ 292:	de bf       	out	0x3e, r29	; 62
+ 294:	0f be       	out	0x3f, r0	; 63
+ 296:	cd bf       	out	0x3d, r28	; 61
+ 298:	8c 01       	movw	r16, r24
+ 29a:	dc 01       	movw	r26, r24
+ 29c:	19 96       	adiw	r26, 0x09	; 9
+ 29e:	8d 91       	ld	r24, X+
+ 2a0:	9c 91       	ld	r25, X
+ 2a2:	1a 97       	sbiw	r26, 0x0a	; 10
+ 2a4:	89 2b       	or	r24, r25
+ 2a6:	09 f4       	brne	.+2      	; 0x2aa <_ZN15AdafruitMyPixel4showEv+0x36>
+ 2a8:	fe c0       	rjmp	.+508    	; 0x4a6 <nextbyte40+0x36>
+ 2aa:	80 e0       	ldi	r24, 0x00	; 0
+ 2ac:	90 e0       	ldi	r25, 0x00	; 0
+ 2ae:	0e 94 60 00 	call	0xc0	; 0xc0 <time>
+ 2b2:	f8 01       	movw	r30, r16
+ 2b4:	c7 84       	ldd	r12, Z+15	; 0x0f
+ 2b6:	d0 88       	ldd	r13, Z+16	; 0x10
+ 2b8:	e1 88       	ldd	r14, Z+17	; 0x11
+ 2ba:	f2 88       	ldd	r15, Z+18	; 0x12
+ 2bc:	6c 15       	cp	r22, r12
+ 2be:	7d 05       	cpc	r23, r13
+ 2c0:	8e 05       	cpc	r24, r14
+ 2c2:	9f 05       	cpc	r25, r15
+ 2c4:	20 f4       	brcc	.+8      	; 0x2ce <_ZN15AdafruitMyPixel4showEv+0x5a>
+ 2c6:	67 87       	std	Z+15, r22	; 0x0f
+ 2c8:	70 8b       	std	Z+16, r23	; 0x10
+ 2ca:	81 8b       	std	Z+17, r24	; 0x11
+ 2cc:	92 8b       	std	Z+18, r25	; 0x12
+ 2ce:	f8 01       	movw	r30, r16
+ 2d0:	c7 84       	ldd	r12, Z+15	; 0x0f
+ 2d2:	d0 88       	ldd	r13, Z+16	; 0x10
+ 2d4:	e1 88       	ldd	r14, Z+17	; 0x11
+ 2d6:	f2 88       	ldd	r15, Z+18	; 0x12
+ 2d8:	6c 15       	cp	r22, r12
+ 2da:	7d 05       	cpc	r23, r13
+ 2dc:	8e 05       	cpc	r24, r14
+ 2de:	9f 05       	cpc	r25, r15
+ 2e0:	21 f3       	breq	.-56     	; 0x2aa <_ZN15AdafruitMyPixel4showEv+0x36>
+ 2e2:	f8 94       	cli
+ 2e4:	d8 01       	movw	r26, r16
+ 2e6:	84 81       	ldd	r24, Z+4	; 0x04
+ 2e8:	95 81       	ldd	r25, Z+5	; 0x05
+ 2ea:	9a 83       	std	Y+2, r25	; 0x02
+ 2ec:	89 83       	std	Y+1, r24	; 0x01
+ 2ee:	01 84       	ldd	r0, Z+9	; 0x09
+ 2f0:	f2 85       	ldd	r31, Z+10	; 0x0a
+ 2f2:	e0 2d       	mov	r30, r0
+ 2f4:	80 81       	ld	r24, Z
+ 2f6:	8b 83       	std	Y+3, r24	; 0x03
+ 2f8:	8c 91       	ld	r24, X
+ 2fa:	88 23       	and	r24, r24
+ 2fc:	09 f4       	brne	.+2      	; 0x300 <_ZN15AdafruitMyPixel4showEv+0x8c>
+ 2fe:	84 c0       	rjmp	.+264    	; 0x408 <__DATA_REGION_LENGTH__+0x8>
+ 300:	53 96       	adiw	r26, 0x13	; 19
+ 302:	cd 90       	ld	r12, X+
+ 304:	dc 90       	ld	r13, X
+ 306:	54 97       	sbiw	r26, 0x14	; 20
+ 308:	d6 01       	movw	r26, r12
+ 30a:	9c 91       	ld	r25, X
+ 30c:	d8 01       	movw	r26, r16
+ 30e:	55 96       	adiw	r26, 0x15	; 21
+ 310:	8c 91       	ld	r24, X
+ 312:	98 2b       	or	r25, r24
+ 314:	9c 83       	std	Y+4, r25	; 0x04
+ 316:	d6 01       	movw	r26, r12
+ 318:	9c 91       	ld	r25, X
+ 31a:	80 95       	com	r24
+ 31c:	89 23       	and	r24, r25
+ 31e:	8d 83       	std	Y+5, r24	; 0x05
+ 320:	87 e0       	ldi	r24, 0x07	; 7
+ 322:	8a 87       	std	Y+10, r24	; 0x0a
+ 324:	ac 80       	ldd	r10, Y+4	; 0x04
+ 326:	fd 80       	ldd	r15, Y+5	; 0x05
+ 328:	6b 81       	ldd	r22, Y+3	; 0x03
+ 32a:	5a 85       	ldd	r21, Y+10	; 0x0a
+ 32c:	4b 85       	ldd	r20, Y+11	; 0x0b
+ 32e:	29 81       	ldd	r18, Y+1	; 0x01
+ 330:	3a 81       	ldd	r19, Y+2	; 0x02
+ 332:	99 85       	ldd	r25, Y+9	; 0x09
+ 334:	88 85       	ldd	r24, Y+8	; 0x08
+ 336:	e9 2e       	mov	r14, r25
+ 338:	b8 2e       	mov	r11, r24
+ 33a:	c9 01       	movw	r24, r18
+ 33c:	7b 2d       	mov	r23, r11
+
+0000033e <h20farbe1>:
+ 33e:	ac 92       	st	X, r10
+ 340:	4f 2d       	mov	r20, r15
+ 342:	67 fd       	sbrc	r22, 7
+ 344:	4a 2d       	mov	r20, r10
+ 346:	5a 95       	dec	r21
+ 348:	4c 93       	st	X, r20
+ 34a:	31 f0       	breq	.+12     	; 0x358 <h20farbe1rest>
+ 34c:	66 0f       	add	r22, r22
+ 34e:	00 c0       	rjmp	.+0      	; 0x350 <h20farbe1+0x12>
+ 350:	00 c0       	rjmp	.+0      	; 0x352 <h20farbe1+0x14>
+ 352:	fc 92       	st	X, r15
+ 354:	00 c0       	rjmp	.+0      	; 0x356 <h20farbe1+0x18>
+ 356:	f3 cf       	rjmp	.-26     	; 0x33e <h20farbe1>
+
+00000358 <h20farbe1rest>:
+ 358:	e1 90       	ld	r14, Z+
+ 35a:	ee 0c       	add	r14, r14
+ 35c:	ee 0c       	add	r14, r14
+ 35e:	fc 92       	st	X, r15
+ 360:	ee 0c       	add	r14, r14
+ 362:	ee 0c       	add	r14, r14
+ 364:	70 81       	ld	r23, Z
+ 366:	ac 92       	st	X, r10
+ 368:	4f 2d       	mov	r20, r15
+ 36a:	66 fd       	sbrc	r22, 6
+ 36c:	4a 2d       	mov	r20, r10
+ 36e:	57 e0       	ldi	r21, 0x07	; 7
+ 370:	4c 93       	st	X, r20
+ 372:	ee 0c       	add	r14, r14
+ 374:	76 95       	lsr	r23
+ 376:	76 95       	lsr	r23
+ 378:	76 95       	lsr	r23
+ 37a:	78 7f       	andi	r23, 0xF8	; 248
+ 37c:	e7 0e       	add	r14, r23
+ 37e:	fc 92       	st	X, r15
+ 380:	6e 2d       	mov	r22, r14
+ 382:	e1 90       	ld	r14, Z+
+	...
+
+00000386 <h20farbe2>:
+ 386:	ac 92       	st	X, r10
+ 388:	4f 2d       	mov	r20, r15
+ 38a:	67 fd       	sbrc	r22, 7
+ 38c:	4a 2d       	mov	r20, r10
+ 38e:	5a 95       	dec	r21
+ 390:	4c 93       	st	X, r20
+ 392:	32 f0       	brmi	.+12     	; 0x3a0 <h20farbe2rest>
+ 394:	66 0f       	add	r22, r22
+ 396:	00 c0       	rjmp	.+0      	; 0x398 <h20farbe2+0x12>
+ 398:	00 c0       	rjmp	.+0      	; 0x39a <h20farbe2+0x14>
+ 39a:	fc 92       	st	X, r15
+ 39c:	00 c0       	rjmp	.+0      	; 0x39e <h20farbe2+0x18>
+ 39e:	f3 cf       	rjmp	.-26     	; 0x386 <h20farbe2>
+
+000003a0 <h20farbe2rest>:
+ 3a0:	ee 0c       	add	r14, r14
+ 3a2:	ee 0c       	add	r14, r14
+ 3a4:	6e 2d       	mov	r22, r14
+ 3a6:	57 e0       	ldi	r21, 0x07	; 7
+ 3a8:	fc 92       	st	X, r15
+ 3aa:	01 97       	sbiw	r24, 0x01	; 1
+ 3ac:	00 c0       	rjmp	.+0      	; 0x3ae <h20farbe3>
+
+000003ae <h20farbe3>:
+ 3ae:	ac 92       	st	X, r10
+ 3b0:	4f 2d       	mov	r20, r15
+ 3b2:	67 fd       	sbrc	r22, 7
+ 3b4:	4a 2d       	mov	r20, r10
+ 3b6:	5a 95       	dec	r21
+ 3b8:	4c 93       	st	X, r20
+ 3ba:	00 c0       	rjmp	.+0      	; 0x3bc <h20farbe3+0xe>
+ 3bc:	00 c0       	rjmp	.+0      	; 0x3be <h20farbe3+0x10>
+ 3be:	00 c0       	rjmp	.+0      	; 0x3c0 <h20farbe3+0x12>
+ 3c0:	fc 92       	st	X, r15
+ 3c2:	11 f0       	breq	.+4      	; 0x3c8 <h20farbe3rest>
+ 3c4:	66 0f       	add	r22, r22
+ 3c6:	f3 cf       	rjmp	.-26     	; 0x3ae <h20farbe3>
+
+000003c8 <h20farbe3rest>:
+ 3c8:	01 97       	sbiw	r24, 0x01	; 1
+ 3ca:	ac 92       	st	X, r10
+ 3cc:	4f 2d       	mov	r20, r15
+ 3ce:	66 fd       	sbrc	r22, 6
+ 3d0:	4a 2d       	mov	r20, r10
+ 3d2:	57 e0       	ldi	r21, 0x07	; 7
+ 3d4:	4c 93       	st	X, r20
+ 3d6:	39 f0       	breq	.+14     	; 0x3e6 <ende>
+ 3d8:	00 00       	nop
+ 3da:	70 81       	ld	r23, Z
+ 3dc:	78 7f       	andi	r23, 0xF8	; 248
+ 3de:	67 2f       	mov	r22, r23
+ 3e0:	fc 92       	st	X, r15
+ 3e2:	00 c0       	rjmp	.+0      	; 0x3e4 <h20farbe3rest+0x1c>
+ 3e4:	ac cf       	rjmp	.-168    	; 0x33e <h20farbe1>
+
+000003e6 <ende>:
+ 3e6:	00 c0       	rjmp	.+0      	; 0x3e8 <ende+0x2>
+ 3e8:	00 c0       	rjmp	.+0      	; 0x3ea <ende+0x4>
+ 3ea:	fc 92       	st	X, r15
+ 3ec:	6d 01       	movw	r12, r26
+ 3ee:	d8 01       	movw	r26, r16
+ 3f0:	54 96       	adiw	r26, 0x14	; 20
+ 3f2:	dc 92       	st	X, r13
+ 3f4:	ce 92       	st	-X, r12
+ 3f6:	53 97       	sbiw	r26, 0x13	; 19
+ 3f8:	6b 83       	std	Y+3, r22	; 0x03
+ 3fa:	5a 87       	std	Y+10, r21	; 0x0a
+ 3fc:	4b 87       	std	Y+11, r20	; 0x0b
+ 3fe:	9a 83       	std	Y+2, r25	; 0x02
+ 400:	89 83       	std	Y+1, r24	; 0x01
+ 402:	e9 86       	std	Y+9, r14	; 0x09
+ 404:	78 87       	std	Y+8, r23	; 0x08
+ 406:	43 c0       	rjmp	.+134    	; 0x48e <nextbyte40+0x1e>
+ 408:	d8 01       	movw	r26, r16
+ 40a:	53 96       	adiw	r26, 0x13	; 19
+ 40c:	ed 90       	ld	r14, X+
+ 40e:	fc 90       	ld	r15, X
+ 410:	54 97       	sbiw	r26, 0x14	; 20
+ 412:	d7 01       	movw	r26, r14
+ 414:	9c 91       	ld	r25, X
+ 416:	d8 01       	movw	r26, r16
+ 418:	55 96       	adiw	r26, 0x15	; 21
+ 41a:	8c 91       	ld	r24, X
+ 41c:	98 2b       	or	r25, r24
+ 41e:	9c 83       	std	Y+4, r25	; 0x04
+ 420:	d7 01       	movw	r26, r14
+ 422:	9c 91       	ld	r25, X
+ 424:	80 95       	com	r24
+ 426:	89 23       	and	r24, r25
+ 428:	8d 83       	std	Y+5, r24	; 0x05
+ 42a:	8d 81       	ldd	r24, Y+5	; 0x05
+ 42c:	8f 83       	std	Y+7, r24	; 0x07
+ 42e:	88 e0       	ldi	r24, 0x08	; 8
+ 430:	8e 83       	std	Y+6, r24	; 0x06
+ 432:	5c 81       	ldd	r21, Y+4	; 0x04
+ 434:	6d 81       	ldd	r22, Y+5	; 0x05
+ 436:	4b 81       	ldd	r20, Y+3	; 0x03
+ 438:	3e 81       	ldd	r19, Y+6	; 0x06
+ 43a:	2f 81       	ldd	r18, Y+7	; 0x07
+ 43c:	89 81       	ldd	r24, Y+1	; 0x01
+ 43e:	9a 81       	ldd	r25, Y+2	; 0x02
+
+00000440 <head40>:
+ 440:	5c 93       	st	X, r21
+ 442:	47 fd       	sbrc	r20, 7
+ 444:	25 2f       	mov	r18, r21
+ 446:	00 c0       	rjmp	.+0      	; 0x448 <head40+0x8>
+ 448:	00 c0       	rjmp	.+0      	; 0x44a <head40+0xa>
+ 44a:	2c 93       	st	X, r18
+ 44c:	00 c0       	rjmp	.+0      	; 0x44e <head40+0xe>
+ 44e:	00 c0       	rjmp	.+0      	; 0x450 <head40+0x10>
+ 450:	00 c0       	rjmp	.+0      	; 0x452 <head40+0x12>
+ 452:	00 c0       	rjmp	.+0      	; 0x454 <head40+0x14>
+ 454:	00 c0       	rjmp	.+0      	; 0x456 <head40+0x16>
+ 456:	6c 93       	st	X, r22
+ 458:	00 00       	nop
+ 45a:	26 2f       	mov	r18, r22
+ 45c:	3a 95       	dec	r19
+ 45e:	41 f0       	breq	.+16     	; 0x470 <nextbyte40>
+ 460:	44 1f       	adc	r20, r20
+ 462:	00 00       	nop
+ 464:	00 c0       	rjmp	.+0      	; 0x466 <head40+0x26>
+ 466:	00 c0       	rjmp	.+0      	; 0x468 <head40+0x28>
+ 468:	00 c0       	rjmp	.+0      	; 0x46a <head40+0x2a>
+ 46a:	00 c0       	rjmp	.+0      	; 0x46c <head40+0x2c>
+ 46c:	00 c0       	rjmp	.+0      	; 0x46e <head40+0x2e>
+ 46e:	e8 cf       	rjmp	.-48     	; 0x440 <head40>
+
+00000470 <nextbyte40>:
+ 470:	38 e0       	ldi	r19, 0x08	; 8
+ 472:	41 91       	ld	r20, Z+
+ 474:	00 c0       	rjmp	.+0      	; 0x476 <nextbyte40+0x6>
+ 476:	6c 93       	st	X, r22
+ 478:	00 c0       	rjmp	.+0      	; 0x47a <nextbyte40+0xa>
+ 47a:	01 97       	sbiw	r24, 0x01	; 1
+ 47c:	09 f7       	brne	.-62     	; 0x440 <head40>
+ 47e:	f8 01       	movw	r30, r16
+ 480:	b4 8b       	std	Z+20, r27	; 0x14
+ 482:	a3 8b       	std	Z+19, r26	; 0x13
+ 484:	4b 83       	std	Y+3, r20	; 0x03
+ 486:	3e 83       	std	Y+6, r19	; 0x06
+ 488:	2f 83       	std	Y+7, r18	; 0x07
+ 48a:	9a 83       	std	Y+2, r25	; 0x02
+ 48c:	89 83       	std	Y+1, r24	; 0x01
+ 48e:	78 94       	sei
+ 490:	80 e0       	ldi	r24, 0x00	; 0
+ 492:	90 e0       	ldi	r25, 0x00	; 0
+ 494:	0e 94 60 00 	call	0xc0	; 0xc0 <time>
+ 498:	d8 01       	movw	r26, r16
+ 49a:	1f 96       	adiw	r26, 0x0f	; 15
+ 49c:	6d 93       	st	X+, r22
+ 49e:	7d 93       	st	X+, r23
+ 4a0:	8d 93       	st	X+, r24
+ 4a2:	9c 93       	st	X, r25
+ 4a4:	52 97       	sbiw	r26, 0x12	; 18
+ 4a6:	2b 96       	adiw	r28, 0x0b	; 11
+ 4a8:	0f b6       	in	r0, 0x3f	; 63
+ 4aa:	f8 94       	cli
+ 4ac:	de bf       	out	0x3e, r29	; 62
+ 4ae:	0f be       	out	0x3f, r0	; 63
+ 4b0:	cd bf       	out	0x3d, r28	; 61
+ 4b2:	df 91       	pop	r29
+ 4b4:	cf 91       	pop	r28
+ 4b6:	1f 91       	pop	r17
+ 4b8:	0f 91       	pop	r16
+ 4ba:	ff 90       	pop	r15
+ 4bc:	ef 90       	pop	r14
+ 4be:	df 90       	pop	r13
+ 4c0:	cf 90       	pop	r12
+ 4c2:	bf 90       	pop	r11
+ 4c4:	af 90       	pop	r10
+ 4c6:	08 95       	ret
+
+000004c8 <_ZN15AdafruitMyPixel6setPinEi>:
+ 4c8:	fc 01       	movw	r30, r24
+ 4ca:	81 81       	ldd	r24, Z+1	; 0x01
+ 4cc:	88 23       	and	r24, r24
+ 4ce:	89 f0       	breq	.+34     	; 0x4f2 <_ZN15AdafruitMyPixel6setPinEi+0x2a>
+ 4d0:	86 81       	ldd	r24, Z+6	; 0x06
+ 4d2:	97 81       	ldd	r25, Z+7	; 0x07
+ 4d4:	99 23       	and	r25, r25
+ 4d6:	6c f0       	brlt	.+26     	; 0x4f2 <_ZN15AdafruitMyPixel6setPinEi+0x2a>
+ 4d8:	08 97       	sbiw	r24, 0x08	; 8
+ 4da:	34 f0       	brlt	.+12     	; 0x4e8 <_ZN15AdafruitMyPixel6setPinEi+0x20>
+ 4dc:	94 b1       	in	r25, 0x04	; 4
+ 4de:	85 89       	ldd	r24, Z+21	; 0x15
+ 4e0:	80 95       	com	r24
+ 4e2:	89 23       	and	r24, r25
+ 4e4:	84 b9       	out	0x04, r24	; 4
+ 4e6:	05 c0       	rjmp	.+10     	; 0x4f2 <_ZN15AdafruitMyPixel6setPinEi+0x2a>
+ 4e8:	9a b1       	in	r25, 0x0a	; 10
+ 4ea:	85 89       	ldd	r24, Z+21	; 0x15
+ 4ec:	80 95       	com	r24
+ 4ee:	89 23       	and	r24, r25
+ 4f0:	8a b9       	out	0x0a, r24	; 10
+ 4f2:	68 30       	cpi	r22, 0x08	; 8
+ 4f4:	71 05       	cpc	r23, r1
+ 4f6:	1c f0       	brlt	.+6      	; 0x4fe <_ZN15AdafruitMyPixel6setPinEi+0x36>
+ 4f8:	85 e2       	ldi	r24, 0x25	; 37
+ 4fa:	90 e0       	ldi	r25, 0x00	; 0
+ 4fc:	02 c0       	rjmp	.+4      	; 0x502 <__stack+0x3>
+ 4fe:	8b e2       	ldi	r24, 0x2B	; 43
+ 500:	90 e0       	ldi	r25, 0x00	; 0
+ 502:	94 8b       	std	Z+20, r25	; 0x14
+ 504:	83 8b       	std	Z+19, r24	; 0x13
+ 506:	9b 01       	movw	r18, r22
+ 508:	27 70       	andi	r18, 0x07	; 7
+ 50a:	30 78       	andi	r19, 0x80	; 128
+ 50c:	33 23       	and	r19, r19
+ 50e:	34 f4       	brge	.+12     	; 0x51c <__stack+0x1d>
+ 510:	21 50       	subi	r18, 0x01	; 1
+ 512:	31 09       	sbc	r19, r1
+ 514:	28 6f       	ori	r18, 0xF8	; 248
+ 516:	3f 6f       	ori	r19, 0xFF	; 255
+ 518:	2f 5f       	subi	r18, 0xFF	; 255
+ 51a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 51c:	81 e0       	ldi	r24, 0x01	; 1
+ 51e:	90 e0       	ldi	r25, 0x00	; 0
+ 520:	02 c0       	rjmp	.+4      	; 0x526 <__stack+0x27>
+ 522:	88 0f       	add	r24, r24
+ 524:	99 1f       	adc	r25, r25
+ 526:	2a 95       	dec	r18
+ 528:	e2 f7       	brpl	.-8      	; 0x522 <__stack+0x23>
+ 52a:	85 8b       	std	Z+21, r24	; 0x15
+ 52c:	77 83       	std	Z+7, r23	; 0x07
+ 52e:	66 83       	std	Z+6, r22	; 0x06
+ 530:	21 81       	ldd	r18, Z+1	; 0x01
+ 532:	22 23       	and	r18, r18
+ 534:	81 f0       	breq	.+32     	; 0x556 <__stack+0x57>
+ 536:	68 30       	cpi	r22, 0x08	; 8
+ 538:	71 05       	cpc	r23, r1
+ 53a:	24 f0       	brlt	.+8      	; 0x544 <__stack+0x45>
+ 53c:	94 b1       	in	r25, 0x04	; 4
+ 53e:	89 2b       	or	r24, r25
+ 540:	84 b9       	out	0x04, r24	; 4
+ 542:	03 c0       	rjmp	.+6      	; 0x54a <__stack+0x4b>
+ 544:	9a b1       	in	r25, 0x0a	; 10
+ 546:	89 2b       	or	r24, r25
+ 548:	8a b9       	out	0x0a, r24	; 10
+ 54a:	a3 89       	ldd	r26, Z+19	; 0x13
+ 54c:	b4 89       	ldd	r27, Z+20	; 0x14
+ 54e:	9c 91       	ld	r25, X
+ 550:	85 89       	ldd	r24, Z+21	; 0x15
+ 552:	89 2b       	or	r24, r25
+ 554:	8c 93       	st	X, r24
+ 556:	08 95       	ret
+
+00000558 <_ZN15AdafruitMyPixelC1Ejij>:
+ 558:	ef 92       	push	r14
+ 55a:	ff 92       	push	r15
+ 55c:	0f 93       	push	r16
+ 55e:	1f 93       	push	r17
+ 560:	cf 93       	push	r28
+ 562:	df 93       	push	r29
+ 564:	ec 01       	movw	r28, r24
+ 566:	7b 01       	movw	r14, r22
+ 568:	8a 01       	movw	r16, r20
+ 56a:	19 82       	std	Y+1, r1	; 0x01
+ 56c:	18 86       	std	Y+8, r1	; 0x08
+ 56e:	1a 86       	std	Y+10, r1	; 0x0a
+ 570:	19 86       	std	Y+9, r1	; 0x09
+ 572:	1f 86       	std	Y+15, r1	; 0x0f
+ 574:	18 8a       	std	Y+16, r1	; 0x10
+ 576:	19 8a       	std	Y+17, r1	; 0x11
+ 578:	1a 8a       	std	Y+18, r1	; 0x12
+ 57a:	b9 01       	movw	r22, r18
+ 57c:	0e 94 fe 00 	call	0x1fc	; 0x1fc <_ZN15AdafruitMyPixel10updateTypeEj>
+ 580:	b7 01       	movw	r22, r14
+ 582:	ce 01       	movw	r24, r28
+ 584:	0e 94 dd 00 	call	0x1ba	; 0x1ba <_ZN15AdafruitMyPixel12updateLengthEj>
+ 588:	b8 01       	movw	r22, r16
+ 58a:	ce 01       	movw	r24, r28
+ 58c:	0e 94 64 02 	call	0x4c8	; 0x4c8 <_ZN15AdafruitMyPixel6setPinEi>
+ 590:	df 91       	pop	r29
+ 592:	cf 91       	pop	r28
+ 594:	1f 91       	pop	r17
+ 596:	0f 91       	pop	r16
+ 598:	ff 90       	pop	r15
+ 59a:	ef 90       	pop	r14
+ 59c:	08 95       	ret
+
+0000059e <_ZN15AdafruitMyPixel13setPixelColorEjhhh>:
+ 59e:	ef 92       	push	r14
+ 5a0:	ff 92       	push	r15
+ 5a2:	0f 93       	push	r16
+ 5a4:	cf 93       	push	r28
+ 5a6:	df 93       	push	r29
+ 5a8:	ec 01       	movw	r28, r24
+ 5aa:	8a 81       	ldd	r24, Y+2	; 0x02
+ 5ac:	9b 81       	ldd	r25, Y+3	; 0x03
+ 5ae:	68 17       	cp	r22, r24
+ 5b0:	79 07       	cpc	r23, r25
+ 5b2:	08 f0       	brcs	.+2      	; 0x5b6 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x18>
+ 5b4:	79 c0       	rjmp	.+242    	; 0x6a8 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x10a>
+ 5b6:	e8 85       	ldd	r30, Y+8	; 0x08
+ 5b8:	ee 23       	and	r30, r30
+ 5ba:	99 f0       	breq	.+38     	; 0x5e2 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x44>
+ 5bc:	f0 e0       	ldi	r31, 0x00	; 0
+ 5be:	4e 9f       	mul	r20, r30
+ 5c0:	c0 01       	movw	r24, r0
+ 5c2:	4f 9f       	mul	r20, r31
+ 5c4:	90 0d       	add	r25, r0
+ 5c6:	11 24       	eor	r1, r1
+ 5c8:	49 2f       	mov	r20, r25
+ 5ca:	2e 9f       	mul	r18, r30
+ 5cc:	c0 01       	movw	r24, r0
+ 5ce:	2f 9f       	mul	r18, r31
+ 5d0:	90 0d       	add	r25, r0
+ 5d2:	11 24       	eor	r1, r1
+ 5d4:	29 2f       	mov	r18, r25
+ 5d6:	0e 9f       	mul	r16, r30
+ 5d8:	c0 01       	movw	r24, r0
+ 5da:	0f 9f       	mul	r16, r31
+ 5dc:	90 0d       	add	r25, r0
+ 5de:	11 24       	eor	r1, r1
+ 5e0:	09 2f       	mov	r16, r25
+ 5e2:	89 85       	ldd	r24, Y+9	; 0x09
+ 5e4:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 5e6:	66 0f       	add	r22, r22
+ 5e8:	77 1f       	adc	r23, r23
+ 5ea:	68 0f       	add	r22, r24
+ 5ec:	79 1f       	adc	r23, r25
+ 5ee:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 5f0:	88 23       	and	r24, r24
+ 5f2:	59 f0       	breq	.+22     	; 0x60a <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x6c>
+ 5f4:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 5f6:	91 11       	cpse	r25, r1
+ 5f8:	04 c0       	rjmp	.+8      	; 0x602 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x64>
+ 5fa:	92 2f       	mov	r25, r18
+ 5fc:	98 7f       	andi	r25, 0xF8	; 248
+ 5fe:	30 e0       	ldi	r19, 0x00	; 0
+ 600:	07 c0       	rjmp	.+14     	; 0x610 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x72>
+ 602:	90 2f       	mov	r25, r16
+ 604:	98 7f       	andi	r25, 0xF8	; 248
+ 606:	30 e0       	ldi	r19, 0x00	; 0
+ 608:	03 c0       	rjmp	.+6      	; 0x610 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x72>
+ 60a:	94 2f       	mov	r25, r20
+ 60c:	98 7f       	andi	r25, 0xF8	; 248
+ 60e:	30 e0       	ldi	r19, 0x00	; 0
+ 610:	e3 2e       	mov	r14, r19
+ 612:	f9 2e       	mov	r15, r25
+ 614:	81 30       	cpi	r24, 0x01	; 1
+ 616:	c9 f0       	breq	.+50     	; 0x64a <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0xac>
+ 618:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 61a:	91 30       	cpi	r25, 0x01	; 1
+ 61c:	59 f4       	brne	.+22     	; 0x634 <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x96>
+ 61e:	a2 2f       	mov	r26, r18
+ 620:	a8 7f       	andi	r26, 0xF8	; 248
+ 622:	b0 e0       	ldi	r27, 0x00	; 0
+ 624:	fd 01       	movw	r30, r26
+ 626:	ee 0f       	add	r30, r30
+ 628:	ff 1f       	adc	r31, r31
+ 62a:	ee 0f       	add	r30, r30
+ 62c:	ff 1f       	adc	r31, r31
+ 62e:	ee 0f       	add	r30, r30
+ 630:	ff 1f       	adc	r31, r31
+ 632:	15 c0       	rjmp	.+42     	; 0x65e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0xc0>
+ 634:	90 2f       	mov	r25, r16
+ 636:	98 7f       	andi	r25, 0xF8	; 248
+ 638:	e9 2f       	mov	r30, r25
+ 63a:	f0 e0       	ldi	r31, 0x00	; 0
+ 63c:	ee 0f       	add	r30, r30
+ 63e:	ff 1f       	adc	r31, r31
+ 640:	ee 0f       	add	r30, r30
+ 642:	ff 1f       	adc	r31, r31
+ 644:	ee 0f       	add	r30, r30
+ 646:	ff 1f       	adc	r31, r31
+ 648:	0a c0       	rjmp	.+20     	; 0x65e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0xc0>
+ 64a:	a4 2f       	mov	r26, r20
+ 64c:	a8 7f       	andi	r26, 0xF8	; 248
+ 64e:	b0 e0       	ldi	r27, 0x00	; 0
+ 650:	fd 01       	movw	r30, r26
+ 652:	ee 0f       	add	r30, r30
+ 654:	ff 1f       	adc	r31, r31
+ 656:	ee 0f       	add	r30, r30
+ 658:	ff 1f       	adc	r31, r31
+ 65a:	ee 0f       	add	r30, r30
+ 65c:	ff 1f       	adc	r31, r31
+ 65e:	ee 29       	or	r30, r14
+ 660:	ff 29       	or	r31, r15
+ 662:	82 30       	cpi	r24, 0x02	; 2
+ 664:	a1 f0       	breq	.+40     	; 0x68e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0xf0>
+ 666:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 668:	82 30       	cpi	r24, 0x02	; 2
+ 66a:	49 f4       	brne	.+18     	; 0x67e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0xe0>
+ 66c:	28 7f       	andi	r18, 0xF8	; 248
+ 66e:	82 2f       	mov	r24, r18
+ 670:	90 e0       	ldi	r25, 0x00	; 0
+ 672:	ac 01       	movw	r20, r24
+ 674:	55 95       	asr	r21
+ 676:	47 95       	ror	r20
+ 678:	55 95       	asr	r21
+ 67a:	47 95       	ror	r20
+ 67c:	10 c0       	rjmp	.+32     	; 0x69e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x100>
+ 67e:	08 7f       	andi	r16, 0xF8	; 248
+ 680:	40 2f       	mov	r20, r16
+ 682:	50 e0       	ldi	r21, 0x00	; 0
+ 684:	55 95       	asr	r21
+ 686:	47 95       	ror	r20
+ 688:	55 95       	asr	r21
+ 68a:	47 95       	ror	r20
+ 68c:	08 c0       	rjmp	.+16     	; 0x69e <_ZN15AdafruitMyPixel13setPixelColorEjhhh+0x100>
+ 68e:	48 7f       	andi	r20, 0xF8	; 248
+ 690:	84 2f       	mov	r24, r20
+ 692:	90 e0       	ldi	r25, 0x00	; 0
+ 694:	ac 01       	movw	r20, r24
+ 696:	55 95       	asr	r21
+ 698:	47 95       	ror	r20
+ 69a:	55 95       	asr	r21
+ 69c:	47 95       	ror	r20
+ 69e:	4e 2b       	or	r20, r30
+ 6a0:	5f 2b       	or	r21, r31
+ 6a2:	fb 01       	movw	r30, r22
+ 6a4:	50 83       	st	Z, r21
+ 6a6:	41 83       	std	Z+1, r20	; 0x01
+ 6a8:	df 91       	pop	r29
+ 6aa:	cf 91       	pop	r28
+ 6ac:	0f 91       	pop	r16
+ 6ae:	ff 90       	pop	r15
+ 6b0:	ef 90       	pop	r14
+ 6b2:	08 95       	ret
+
+000006b4 <_ZN15AdafruitMyPixel13setPixelColorEjm>:
+ 6b4:	8f 92       	push	r8
+ 6b6:	9f 92       	push	r9
+ 6b8:	af 92       	push	r10
+ 6ba:	bf 92       	push	r11
+ 6bc:	0f 93       	push	r16
+ 6be:	1f 93       	push	r17
+ 6c0:	dc 01       	movw	r26, r24
+ 6c2:	12 96       	adiw	r26, 0x02	; 2
+ 6c4:	ed 91       	ld	r30, X+
+ 6c6:	fc 91       	ld	r31, X
+ 6c8:	13 97       	sbiw	r26, 0x03	; 3
+ 6ca:	6e 17       	cp	r22, r30
+ 6cc:	7f 07       	cpc	r23, r31
+ 6ce:	70 f4       	brcc	.+28     	; 0x6ec <_ZN15AdafruitMyPixel13setPixelColorEjm+0x38>
+ 6d0:	89 01       	movw	r16, r18
+ 6d2:	9a 01       	movw	r18, r20
+ 6d4:	fb 01       	movw	r30, r22
+ 6d6:	a9 01       	movw	r20, r18
+ 6d8:	66 27       	eor	r22, r22
+ 6da:	77 27       	eor	r23, r23
+ 6dc:	81 2e       	mov	r8, r17
+ 6de:	92 2e       	mov	r9, r18
+ 6e0:	a3 2e       	mov	r10, r19
+ 6e2:	bb 24       	eor	r11, r11
+ 6e4:	28 2d       	mov	r18, r8
+ 6e6:	bf 01       	movw	r22, r30
+ 6e8:	0e 94 cf 02 	call	0x59e	; 0x59e <_ZN15AdafruitMyPixel13setPixelColorEjhhh>
+ 6ec:	1f 91       	pop	r17
+ 6ee:	0f 91       	pop	r16
+ 6f0:	bf 90       	pop	r11
+ 6f2:	af 90       	pop	r10
+ 6f4:	9f 90       	pop	r9
+ 6f6:	8f 90       	pop	r8
+ 6f8:	08 95       	ret
+
+000006fa <_ZN15AdafruitMyPixel13setBrightnessEh>:
+ 6fa:	6f 5f       	subi	r22, 0xFF	; 255
+ 6fc:	fc 01       	movw	r30, r24
+ 6fe:	20 85       	ldd	r18, Z+8	; 0x08
+ 700:	62 13       	cpse	r22, r18
+ 702:	60 87       	std	Z+8, r22	; 0x08
+ 704:	08 95       	ret
+
+00000706 <_ZN15AdafruitMyPixel5clearEv>:
+
+/*!
+  @brief   Fill the whole NeoPixel strip with 0 / black / off.
+*/
+void AdafruitMyPixel::clear(void)
+{ 
+ 706:	dc 01       	movw	r26, r24
+	//memset(pixels, 0, numBytes);
+	for (uint16_t i = 0; i < numBytes; i++)
+ 708:	20 e0       	ldi	r18, 0x00	; 0
+ 70a:	30 e0       	ldi	r19, 0x00	; 0
+ 70c:	14 96       	adiw	r26, 0x04	; 4
+ 70e:	8d 91       	ld	r24, X+
+ 710:	9c 91       	ld	r25, X
+ 712:	15 97       	sbiw	r26, 0x05	; 5
+ 714:	28 17       	cp	r18, r24
+ 716:	39 07       	cpc	r19, r25
+ 718:	50 f4       	brcc	.+20     	; 0x72e <_ZN15AdafruitMyPixel5clearEv+0x28>
+		pixels[i] = 0;
+ 71a:	19 96       	adiw	r26, 0x09	; 9
+ 71c:	ed 91       	ld	r30, X+
+ 71e:	fc 91       	ld	r31, X
+ 720:	1a 97       	sbiw	r26, 0x0a	; 10
+ 722:	e2 0f       	add	r30, r18
+ 724:	f3 1f       	adc	r31, r19
+ 726:	10 82       	st	Z, r1
+  @brief   Fill the whole NeoPixel strip with 0 / black / off.
+*/
+void AdafruitMyPixel::clear(void)
+{ 
+	//memset(pixels, 0, numBytes);
+	for (uint16_t i = 0; i < numBytes; i++)
+ 728:	2f 5f       	subi	r18, 0xFF	; 255
+ 72a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 72c:	ef cf       	rjmp	.-34     	; 0x70c <_ZN15AdafruitMyPixel5clearEv+0x6>
+ 72e:	08 95       	ret
+
+00000730 <_Z41__static_initialization_and_destruction_0ii>:
+	#endif
+	//  Serial.print(ledpos);
+	//  Serial.print(" ");
+	strip.setPixelColor(ledpos, strip.Color(color.red, color.green, color.blue));
+	//  strip.setPixelColor(ledpos, strip.Color(128, 96, 64));
+}
+ 730:	0f 93       	push	r16
+ 732:	1f 93       	push	r17
+ 734:	cf 93       	push	r28
+ 736:	df 93       	push	r29
+ 738:	ec 01       	movw	r28, r24
+ 73a:	8b 01       	movw	r16, r22
+ 73c:	01 97       	sbiw	r24, 0x01	; 1
+ 73e:	69 f4       	brne	.+26     	; 0x75a <_Z41__static_initialization_and_destruction_0ii+0x2a>
+ 740:	6f 3f       	cpi	r22, 0xFF	; 255
+ 742:	7f 4f       	sbci	r23, 0xFF	; 255
+ 744:	51 f4       	brne	.+20     	; 0x75a <_Z41__static_initialization_and_destruction_0ii+0x2a>
+ 746:	22 e5       	ldi	r18, 0x52	; 82
+ 748:	30 e0       	ldi	r19, 0x00	; 0
+ 74a:	46 e0       	ldi	r20, 0x06	; 6
+ 74c:	50 e0       	ldi	r21, 0x00	; 0
+ 74e:	6c e2       	ldi	r22, 0x2C	; 44
+ 750:	71 e0       	ldi	r23, 0x01	; 1
+ 752:	86 e0       	ldi	r24, 0x06	; 6
+ 754:	91 e0       	ldi	r25, 0x01	; 1
+ 756:	0e 94 ac 02 	call	0x558	; 0x558 <_ZN15AdafruitMyPixelC1Ejij>
+ 75a:	cd 2b       	or	r28, r29
+ 75c:	39 f4       	brne	.+14     	; 0x76c <_Z41__static_initialization_and_destruction_0ii+0x3c>
+ 75e:	0f 3f       	cpi	r16, 0xFF	; 255
+ 760:	1f 4f       	sbci	r17, 0xFF	; 255
+ 762:	21 f4       	brne	.+8      	; 0x76c <_Z41__static_initialization_and_destruction_0ii+0x3c>
+ 764:	86 e0       	ldi	r24, 0x06	; 6
+ 766:	91 e0       	ldi	r25, 0x01	; 1
+ 768:	0e 94 73 00 	call	0xe6	; 0xe6 <_ZN15AdafruitMyPixelD1Ev>
+ 76c:	df 91       	pop	r29
+ 76e:	cf 91       	pop	r28
+ 770:	1f 91       	pop	r17
+ 772:	0f 91       	pop	r16
+ 774:	08 95       	ret
+
+00000776 <main>:
+	int start = -4;
+	//RGB_Color farbe;
+	
+	//  Serial.begin(19200);
+	//pinMode(LED, OUTPUT);
+	DDRB = (1 << LED);
+ 776:	80 e2       	ldi	r24, 0x20	; 32
+ 778:	84 b9       	out	0x04, r24	; 4
+
+	//  Serial.println("Setup startet");
+	//digitalWrite(LED, HIGH);
+	PORTB |= (1 << LED);	//
+ 77a:	85 b1       	in	r24, 0x05	; 5
+ 77c:	80 62       	ori	r24, 0x20	; 32
+ 77e:	85 b9       	out	0x05, r24	; 5
+	
+	// INITIALIZE NeoPixel strip object (REQUIRED)
+	strip.begin();
+ 780:	86 e0       	ldi	r24, 0x06	; 6
+ 782:	91 e0       	ldi	r25, 0x01	; 1
+ 784:	0e 94 a0 00 	call	0x140	; 0x140 <_ZN15AdafruitMyPixel5beginEv>
+	strip.setBrightness(30);
+ 788:	6e e1       	ldi	r22, 0x1E	; 30
+ 78a:	86 e0       	ldi	r24, 0x06	; 6
+ 78c:	91 e0       	ldi	r25, 0x01	; 1
+ 78e:	0e 94 7d 03 	call	0x6fa	; 0x6fa <_ZN15AdafruitMyPixel13setBrightnessEh>
+	// strip.clear(); // Set all pixel colors to 'off'
+	strip.show();
+ 792:	86 e0       	ldi	r24, 0x06	; 6
+ 794:	91 e0       	ldi	r25, 0x01	; 1
+ 796:	0e 94 3a 01 	call	0x274	; 0x274 <_ZN15AdafruitMyPixel4showEv>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 79a:	2f ef       	ldi	r18, 0xFF	; 255
+ 79c:	83 ed       	ldi	r24, 0xD3	; 211
+ 79e:	90 e3       	ldi	r25, 0x30	; 48
+ 7a0:	21 50       	subi	r18, 0x01	; 1
+ 7a2:	80 40       	sbci	r24, 0x00	; 0
+ 7a4:	90 40       	sbci	r25, 0x00	; 0
+ 7a6:	e1 f7       	brne	.-8      	; 0x7a0 <main+0x2a>
+ 7a8:	00 c0       	rjmp	.+0      	; 0x7aa <main+0x34>
+ 7aa:	00 00       	nop
+	
+	_delay_ms(1000);
+	//digitalWrite(LED, LOW);
+	PORTB &= ~(1 << LED);
+ 7ac:	85 b1       	in	r24, 0x05	; 5
+ 7ae:	8f 7d       	andi	r24, 0xDF	; 223
+ 7b0:	85 b9       	out	0x05, r24	; 5
+	//  strip.setPixelColor(ledpos, strip.Color(128, 96, 64));
+}
+
+int main(void)
+{
+	int start = -4;
+ 7b2:	0c ef       	ldi	r16, 0xFC	; 252
+ 7b4:	1f ef       	ldi	r17, 0xFF	; 255
+	//farbe.blue = 0;
+	
+    while(1)
+    {
+        // Zurücksetzen
+        strip.clear();
+ 7b6:	86 e0       	ldi	r24, 0x06	; 6
+ 7b8:	91 e0       	ldi	r25, 0x01	; 1
+ 7ba:	0e 94 83 03 	call	0x706	; 0x706 <_ZN15AdafruitMyPixel5clearEv>
+        //  farbe.green = random(10, 120);
+        //  farbe.blue = random(10, 120);
+        
+        // Serial.print("Schleife ");
+        //  for (uint8_t spl = 0; spl < SPALTEN; spl++)
+        for (int i = (start >= 0 ? start : 0); i < start + 5; i++)
+ 7be:	e8 01       	movw	r28, r16
+ 7c0:	11 23       	and	r17, r17
+ 7c2:	14 f4       	brge	.+4      	; 0x7c8 <main+0x52>
+ 7c4:	c0 e0       	ldi	r28, 0x00	; 0
+ 7c6:	d0 e0       	ldi	r29, 0x00	; 0
+ 7c8:	c8 01       	movw	r24, r16
+ 7ca:	05 96       	adiw	r24, 0x05	; 5
+ 7cc:	c8 17       	cp	r28, r24
+ 7ce:	d9 07       	cpc	r29, r25
+ 7d0:	cc f5       	brge	.+114    	; 0x844 <main+0xce>
+	        //      farbe.red = spl * 25;
+	        //      farbe.green = zeile * 6;
+	        //      farbe.blue = (ZEILEN - zeile) * 7;
+	        //      setLed(zeile, spl, farbe);
+	        //    }
+	        strip.setPixelColor(i, strip.Color(
+ 7d2:	c8 3c       	cpi	r28, 0xC8	; 200
+ 7d4:	d1 05       	cpc	r29, r1
+ 7d6:	2c f0       	brlt	.+10     	; 0x7e2 <main+0x6c>
+ 7d8:	fe 01       	movw	r30, r28
+ 7da:	ef 5a       	subi	r30, 0xAF	; 175
+ 7dc:	f1 09       	sbc	r31, r1
+ 7de:	ee 0f       	add	r30, r30
+ 7e0:	01 c0       	rjmp	.+2      	; 0x7e4 <main+0x6e>
+ 7e2:	e0 e0       	ldi	r30, 0x00	; 0
+				i < 100 ? 50 + i*2 : 0,
+				i >= 100 && i < 200 ? 50 + (i-100)*2 : 0,
+ 7e4:	6c 2f       	mov	r22, r28
+ 7e6:	7d 2f       	mov	r23, r29
+ 7e8:	ce 01       	movw	r24, r28
+ 7ea:	84 56       	subi	r24, 0x64	; 100
+ 7ec:	91 09       	sbc	r25, r1
+	        //      farbe.red = spl * 25;
+	        //      farbe.green = zeile * 6;
+	        //      farbe.blue = (ZEILEN - zeile) * 7;
+	        //      setLed(zeile, spl, farbe);
+	        //    }
+	        strip.setPixelColor(i, strip.Color(
+ 7ee:	84 36       	cpi	r24, 0x64	; 100
+ 7f0:	91 05       	cpc	r25, r1
+ 7f2:	18 f4       	brcc	.+6      	; 0x7fa <main+0x84>
+ 7f4:	49 96       	adiw	r24, 0x19	; 25
+ 7f6:	88 0f       	add	r24, r24
+ 7f8:	01 c0       	rjmp	.+2      	; 0x7fc <main+0x86>
+ 7fa:	80 e0       	ldi	r24, 0x00	; 0
+ 7fc:	c4 36       	cpi	r28, 0x64	; 100
+ 7fe:	d1 05       	cpc	r29, r1
+ 800:	2c f4       	brge	.+10     	; 0x80c <main+0x96>
+ 802:	9e 01       	movw	r18, r28
+ 804:	27 5e       	subi	r18, 0xE7	; 231
+ 806:	3f 4f       	sbci	r19, 0xFF	; 255
+ 808:	22 0f       	add	r18, r18
+ 80a:	01 c0       	rjmp	.+2      	; 0x80e <main+0x98>
+ 80c:	20 e0       	ldi	r18, 0x00	; 0
+             variable for later use or passed to the setPixelColor()
+             function. Packed RGB format is predictable, regardless of
+             LED strand color order.
+  */
+  static uint32_t Color(uint8_t r, uint8_t g, uint8_t b) {
+    return ((uint32_t)r << 16) | ((uint32_t)g << 8) | b;
+ 80e:	c2 2e       	mov	r12, r18
+ 810:	d1 2c       	mov	r13, r1
+ 812:	e1 2c       	mov	r14, r1
+ 814:	f1 2c       	mov	r15, r1
+ 816:	76 01       	movw	r14, r12
+ 818:	dd 24       	eor	r13, r13
+ 81a:	cc 24       	eor	r12, r12
+ 81c:	90 e0       	ldi	r25, 0x00	; 0
+ 81e:	a0 e0       	ldi	r26, 0x00	; 0
+ 820:	b0 e0       	ldi	r27, 0x00	; 0
+ 822:	ba 2f       	mov	r27, r26
+ 824:	a9 2f       	mov	r26, r25
+ 826:	98 2f       	mov	r25, r24
+ 828:	88 27       	eor	r24, r24
+ 82a:	8c 29       	or	r24, r12
+ 82c:	9d 29       	or	r25, r13
+ 82e:	ae 29       	or	r26, r14
+ 830:	bf 29       	or	r27, r15
+ 832:	9c 01       	movw	r18, r24
+ 834:	ad 01       	movw	r20, r26
+ 836:	2e 2b       	or	r18, r30
+				i < 100 ? 50 + i*2 : 0,
+				i >= 100 && i < 200 ? 50 + (i-100)*2 : 0,
+				i >= 200 ? 50 + (i-200)*2 : 0));
+ 838:	86 e0       	ldi	r24, 0x06	; 6
+ 83a:	91 e0       	ldi	r25, 0x01	; 1
+ 83c:	0e 94 5a 03 	call	0x6b4	; 0x6b4 <_ZN15AdafruitMyPixel13setPixelColorEjm>
+        //  farbe.green = random(10, 120);
+        //  farbe.blue = random(10, 120);
+        
+        // Serial.print("Schleife ");
+        //  for (uint8_t spl = 0; spl < SPALTEN; spl++)
+        for (int i = (start >= 0 ? start : 0); i < start + 5; i++)
+ 840:	21 96       	adiw	r28, 0x01	; 1
+ 842:	c2 cf       	rjmp	.-124    	; 0x7c8 <main+0x52>
+
+	        //    farbe.red = (farbe.red + 10) % 256;
+	        //    farbe.green = farbe.green * 90 / 100;
+	        //    farbe.blue -= 10;
+        }
+        start++;
+ 844:	0f 5f       	subi	r16, 0xFF	; 255
+ 846:	1f 4f       	sbci	r17, 0xFF	; 255
+        if (start >= NUMPIXELS + 5)
+ 848:	01 33       	cpi	r16, 0x31	; 49
+ 84a:	21 e0       	ldi	r18, 0x01	; 1
+ 84c:	12 07       	cpc	r17, r18
+ 84e:	14 f0       	brlt	.+4      	; 0x854 <main+0xde>
+			start =  -4;
+ 850:	0c ef       	ldi	r16, 0xFC	; 252
+ 852:	1f ef       	ldi	r17, 0xFF	; 255
+        
+        // Anzeigen und pausieren für nächsten Lauf
+        //Serial.println("Zeige Matrix an");
+        strip.show();   // Send the updated pixel colors to the hardware.
+ 854:	86 e0       	ldi	r24, 0x06	; 6
+ 856:	91 e0       	ldi	r25, 0x01	; 1
+ 858:	0e 94 3a 01 	call	0x274	; 0x274 <_ZN15AdafruitMyPixel4showEv>
+ 85c:	8f ef       	ldi	r24, 0xFF	; 255
+ 85e:	95 ea       	ldi	r25, 0xA5	; 165
+ 860:	2e e0       	ldi	r18, 0x0E	; 14
+ 862:	81 50       	subi	r24, 0x01	; 1
+ 864:	90 40       	sbci	r25, 0x00	; 0
+ 866:	20 40       	sbci	r18, 0x00	; 0
+ 868:	e1 f7       	brne	.-8      	; 0x862 <main+0xec>
+ 86a:	00 c0       	rjmp	.+0      	; 0x86c <main+0xf6>
+ 86c:	00 00       	nop
+ 86e:	a3 cf       	rjmp	.-186    	; 0x7b6 <main+0x40>
+
+00000870 <_GLOBAL__sub_I_strip>:
+        _delay_ms(DELAYVAL); // Pause before next pass through loop
+        
+        //  digitalWrite(LED, HIGH);
+        //  delay(1000000);    // eine sehr lange Pause einlegen
+    }
+ 870:	6f ef       	ldi	r22, 0xFF	; 255
+ 872:	7f ef       	ldi	r23, 0xFF	; 255
+ 874:	81 e0       	ldi	r24, 0x01	; 1
+ 876:	90 e0       	ldi	r25, 0x00	; 0
+ 878:	0e 94 98 03 	call	0x730	; 0x730 <_Z41__static_initialization_and_destruction_0ii>
+ 87c:	08 95       	ret
+
+0000087e <_GLOBAL__sub_D_strip>:
+ 87e:	6f ef       	ldi	r22, 0xFF	; 255
+ 880:	7f ef       	ldi	r23, 0xFF	; 255
+ 882:	80 e0       	ldi	r24, 0x00	; 0
+ 884:	90 e0       	ldi	r25, 0x00	; 0
+ 886:	0e 94 98 03 	call	0x730	; 0x730 <_Z41__static_initialization_and_destruction_0ii>
+ 88a:	08 95       	ret
+
+0000088c <__tablejump2__>:
+ 88c:	ee 0f       	add	r30, r30
+ 88e:	ff 1f       	adc	r31, r31
+ 890:	05 90       	lpm	r0, Z+
+ 892:	f4 91       	lpm	r31, Z
+ 894:	e0 2d       	mov	r30, r0
+ 896:	09 94       	ijmp
+
+00000898 <malloc>:
+ 898:	0f 93       	push	r16
+ 89a:	1f 93       	push	r17
+ 89c:	cf 93       	push	r28
+ 89e:	df 93       	push	r29
+ 8a0:	82 30       	cpi	r24, 0x02	; 2
+ 8a2:	91 05       	cpc	r25, r1
+ 8a4:	10 f4       	brcc	.+4      	; 0x8aa <malloc+0x12>
+ 8a6:	82 e0       	ldi	r24, 0x02	; 2
+ 8a8:	90 e0       	ldi	r25, 0x00	; 0
+ 8aa:	e0 91 1e 01 	lds	r30, 0x011E	; 0x80011e <__flp>
+ 8ae:	f0 91 1f 01 	lds	r31, 0x011F	; 0x80011f <__flp+0x1>
+ 8b2:	20 e0       	ldi	r18, 0x00	; 0
+ 8b4:	30 e0       	ldi	r19, 0x00	; 0
+ 8b6:	a0 e0       	ldi	r26, 0x00	; 0
+ 8b8:	b0 e0       	ldi	r27, 0x00	; 0
+ 8ba:	30 97       	sbiw	r30, 0x00	; 0
+ 8bc:	19 f1       	breq	.+70     	; 0x904 <malloc+0x6c>
+ 8be:	40 81       	ld	r20, Z
+ 8c0:	51 81       	ldd	r21, Z+1	; 0x01
+ 8c2:	02 81       	ldd	r16, Z+2	; 0x02
+ 8c4:	13 81       	ldd	r17, Z+3	; 0x03
+ 8c6:	48 17       	cp	r20, r24
+ 8c8:	59 07       	cpc	r21, r25
+ 8ca:	c8 f0       	brcs	.+50     	; 0x8fe <malloc+0x66>
+ 8cc:	84 17       	cp	r24, r20
+ 8ce:	95 07       	cpc	r25, r21
+ 8d0:	69 f4       	brne	.+26     	; 0x8ec <malloc+0x54>
+ 8d2:	10 97       	sbiw	r26, 0x00	; 0
+ 8d4:	31 f0       	breq	.+12     	; 0x8e2 <malloc+0x4a>
+ 8d6:	12 96       	adiw	r26, 0x02	; 2
+ 8d8:	0c 93       	st	X, r16
+ 8da:	12 97       	sbiw	r26, 0x02	; 2
+ 8dc:	13 96       	adiw	r26, 0x03	; 3
+ 8de:	1c 93       	st	X, r17
+ 8e0:	27 c0       	rjmp	.+78     	; 0x930 <malloc+0x98>
+ 8e2:	00 93 1e 01 	sts	0x011E, r16	; 0x80011e <__flp>
+ 8e6:	10 93 1f 01 	sts	0x011F, r17	; 0x80011f <__flp+0x1>
+ 8ea:	22 c0       	rjmp	.+68     	; 0x930 <malloc+0x98>
+ 8ec:	21 15       	cp	r18, r1
+ 8ee:	31 05       	cpc	r19, r1
+ 8f0:	19 f0       	breq	.+6      	; 0x8f8 <malloc+0x60>
+ 8f2:	42 17       	cp	r20, r18
+ 8f4:	53 07       	cpc	r21, r19
+ 8f6:	18 f4       	brcc	.+6      	; 0x8fe <malloc+0x66>
+ 8f8:	9a 01       	movw	r18, r20
+ 8fa:	bd 01       	movw	r22, r26
+ 8fc:	ef 01       	movw	r28, r30
+ 8fe:	df 01       	movw	r26, r30
+ 900:	f8 01       	movw	r30, r16
+ 902:	db cf       	rjmp	.-74     	; 0x8ba <malloc+0x22>
+ 904:	21 15       	cp	r18, r1
+ 906:	31 05       	cpc	r19, r1
+ 908:	f9 f0       	breq	.+62     	; 0x948 <malloc+0xb0>
+ 90a:	28 1b       	sub	r18, r24
+ 90c:	39 0b       	sbc	r19, r25
+ 90e:	24 30       	cpi	r18, 0x04	; 4
+ 910:	31 05       	cpc	r19, r1
+ 912:	80 f4       	brcc	.+32     	; 0x934 <malloc+0x9c>
+ 914:	8a 81       	ldd	r24, Y+2	; 0x02
+ 916:	9b 81       	ldd	r25, Y+3	; 0x03
+ 918:	61 15       	cp	r22, r1
+ 91a:	71 05       	cpc	r23, r1
+ 91c:	21 f0       	breq	.+8      	; 0x926 <malloc+0x8e>
+ 91e:	fb 01       	movw	r30, r22
+ 920:	93 83       	std	Z+3, r25	; 0x03
+ 922:	82 83       	std	Z+2, r24	; 0x02
+ 924:	04 c0       	rjmp	.+8      	; 0x92e <malloc+0x96>
+ 926:	90 93 1f 01 	sts	0x011F, r25	; 0x80011f <__flp+0x1>
+ 92a:	80 93 1e 01 	sts	0x011E, r24	; 0x80011e <__flp>
+ 92e:	fe 01       	movw	r30, r28
+ 930:	32 96       	adiw	r30, 0x02	; 2
+ 932:	44 c0       	rjmp	.+136    	; 0x9bc <malloc+0x124>
+ 934:	fe 01       	movw	r30, r28
+ 936:	e2 0f       	add	r30, r18
+ 938:	f3 1f       	adc	r31, r19
+ 93a:	81 93       	st	Z+, r24
+ 93c:	91 93       	st	Z+, r25
+ 93e:	22 50       	subi	r18, 0x02	; 2
+ 940:	31 09       	sbc	r19, r1
+ 942:	39 83       	std	Y+1, r19	; 0x01
+ 944:	28 83       	st	Y, r18
+ 946:	3a c0       	rjmp	.+116    	; 0x9bc <malloc+0x124>
+ 948:	20 91 1c 01 	lds	r18, 0x011C	; 0x80011c <__brkval>
+ 94c:	30 91 1d 01 	lds	r19, 0x011D	; 0x80011d <__brkval+0x1>
+ 950:	23 2b       	or	r18, r19
+ 952:	41 f4       	brne	.+16     	; 0x964 <malloc+0xcc>
+ 954:	20 91 02 01 	lds	r18, 0x0102	; 0x800102 <__malloc_heap_start>
+ 958:	30 91 03 01 	lds	r19, 0x0103	; 0x800103 <__malloc_heap_start+0x1>
+ 95c:	30 93 1d 01 	sts	0x011D, r19	; 0x80011d <__brkval+0x1>
+ 960:	20 93 1c 01 	sts	0x011C, r18	; 0x80011c <__brkval>
+ 964:	20 91 00 01 	lds	r18, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+ 968:	30 91 01 01 	lds	r19, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
+ 96c:	21 15       	cp	r18, r1
+ 96e:	31 05       	cpc	r19, r1
+ 970:	41 f4       	brne	.+16     	; 0x982 <malloc+0xea>
+ 972:	2d b7       	in	r18, 0x3d	; 61
+ 974:	3e b7       	in	r19, 0x3e	; 62
+ 976:	40 91 04 01 	lds	r20, 0x0104	; 0x800104 <__malloc_margin>
+ 97a:	50 91 05 01 	lds	r21, 0x0105	; 0x800105 <__malloc_margin+0x1>
+ 97e:	24 1b       	sub	r18, r20
+ 980:	35 0b       	sbc	r19, r21
+ 982:	e0 91 1c 01 	lds	r30, 0x011C	; 0x80011c <__brkval>
+ 986:	f0 91 1d 01 	lds	r31, 0x011D	; 0x80011d <__brkval+0x1>
+ 98a:	e2 17       	cp	r30, r18
+ 98c:	f3 07       	cpc	r31, r19
+ 98e:	a0 f4       	brcc	.+40     	; 0x9b8 <malloc+0x120>
+ 990:	2e 1b       	sub	r18, r30
+ 992:	3f 0b       	sbc	r19, r31
+ 994:	28 17       	cp	r18, r24
+ 996:	39 07       	cpc	r19, r25
+ 998:	78 f0       	brcs	.+30     	; 0x9b8 <malloc+0x120>
+ 99a:	ac 01       	movw	r20, r24
+ 99c:	4e 5f       	subi	r20, 0xFE	; 254
+ 99e:	5f 4f       	sbci	r21, 0xFF	; 255
+ 9a0:	24 17       	cp	r18, r20
+ 9a2:	35 07       	cpc	r19, r21
+ 9a4:	48 f0       	brcs	.+18     	; 0x9b8 <malloc+0x120>
+ 9a6:	4e 0f       	add	r20, r30
+ 9a8:	5f 1f       	adc	r21, r31
+ 9aa:	50 93 1d 01 	sts	0x011D, r21	; 0x80011d <__brkval+0x1>
+ 9ae:	40 93 1c 01 	sts	0x011C, r20	; 0x80011c <__brkval>
+ 9b2:	81 93       	st	Z+, r24
+ 9b4:	91 93       	st	Z+, r25
+ 9b6:	02 c0       	rjmp	.+4      	; 0x9bc <malloc+0x124>
+ 9b8:	e0 e0       	ldi	r30, 0x00	; 0
+ 9ba:	f0 e0       	ldi	r31, 0x00	; 0
+ 9bc:	cf 01       	movw	r24, r30
+ 9be:	df 91       	pop	r29
+ 9c0:	cf 91       	pop	r28
+ 9c2:	1f 91       	pop	r17
+ 9c4:	0f 91       	pop	r16
+ 9c6:	08 95       	ret
+
+000009c8 <free>:
+ 9c8:	cf 93       	push	r28
+ 9ca:	df 93       	push	r29
+ 9cc:	00 97       	sbiw	r24, 0x00	; 0
+ 9ce:	09 f4       	brne	.+2      	; 0x9d2 <free+0xa>
+ 9d0:	81 c0       	rjmp	.+258    	; 0xad4 <free+0x10c>
+ 9d2:	fc 01       	movw	r30, r24
+ 9d4:	32 97       	sbiw	r30, 0x02	; 2
+ 9d6:	13 82       	std	Z+3, r1	; 0x03
+ 9d8:	12 82       	std	Z+2, r1	; 0x02
+ 9da:	a0 91 1e 01 	lds	r26, 0x011E	; 0x80011e <__flp>
+ 9de:	b0 91 1f 01 	lds	r27, 0x011F	; 0x80011f <__flp+0x1>
+ 9e2:	10 97       	sbiw	r26, 0x00	; 0
+ 9e4:	81 f4       	brne	.+32     	; 0xa06 <free+0x3e>
+ 9e6:	20 81       	ld	r18, Z
+ 9e8:	31 81       	ldd	r19, Z+1	; 0x01
+ 9ea:	82 0f       	add	r24, r18
+ 9ec:	93 1f       	adc	r25, r19
+ 9ee:	20 91 1c 01 	lds	r18, 0x011C	; 0x80011c <__brkval>
+ 9f2:	30 91 1d 01 	lds	r19, 0x011D	; 0x80011d <__brkval+0x1>
+ 9f6:	28 17       	cp	r18, r24
+ 9f8:	39 07       	cpc	r19, r25
+ 9fa:	51 f5       	brne	.+84     	; 0xa50 <free+0x88>
+ 9fc:	f0 93 1d 01 	sts	0x011D, r31	; 0x80011d <__brkval+0x1>
+ a00:	e0 93 1c 01 	sts	0x011C, r30	; 0x80011c <__brkval>
+ a04:	67 c0       	rjmp	.+206    	; 0xad4 <free+0x10c>
+ a06:	ed 01       	movw	r28, r26
+ a08:	20 e0       	ldi	r18, 0x00	; 0
+ a0a:	30 e0       	ldi	r19, 0x00	; 0
+ a0c:	ce 17       	cp	r28, r30
+ a0e:	df 07       	cpc	r29, r31
+ a10:	40 f4       	brcc	.+16     	; 0xa22 <free+0x5a>
+ a12:	4a 81       	ldd	r20, Y+2	; 0x02
+ a14:	5b 81       	ldd	r21, Y+3	; 0x03
+ a16:	9e 01       	movw	r18, r28
+ a18:	41 15       	cp	r20, r1
+ a1a:	51 05       	cpc	r21, r1
+ a1c:	f1 f0       	breq	.+60     	; 0xa5a <free+0x92>
+ a1e:	ea 01       	movw	r28, r20
+ a20:	f5 cf       	rjmp	.-22     	; 0xa0c <free+0x44>
+ a22:	d3 83       	std	Z+3, r29	; 0x03
+ a24:	c2 83       	std	Z+2, r28	; 0x02
+ a26:	40 81       	ld	r20, Z
+ a28:	51 81       	ldd	r21, Z+1	; 0x01
+ a2a:	84 0f       	add	r24, r20
+ a2c:	95 1f       	adc	r25, r21
+ a2e:	c8 17       	cp	r28, r24
+ a30:	d9 07       	cpc	r29, r25
+ a32:	59 f4       	brne	.+22     	; 0xa4a <free+0x82>
+ a34:	88 81       	ld	r24, Y
+ a36:	99 81       	ldd	r25, Y+1	; 0x01
+ a38:	84 0f       	add	r24, r20
+ a3a:	95 1f       	adc	r25, r21
+ a3c:	02 96       	adiw	r24, 0x02	; 2
+ a3e:	91 83       	std	Z+1, r25	; 0x01
+ a40:	80 83       	st	Z, r24
+ a42:	8a 81       	ldd	r24, Y+2	; 0x02
+ a44:	9b 81       	ldd	r25, Y+3	; 0x03
+ a46:	93 83       	std	Z+3, r25	; 0x03
+ a48:	82 83       	std	Z+2, r24	; 0x02
+ a4a:	21 15       	cp	r18, r1
+ a4c:	31 05       	cpc	r19, r1
+ a4e:	29 f4       	brne	.+10     	; 0xa5a <free+0x92>
+ a50:	f0 93 1f 01 	sts	0x011F, r31	; 0x80011f <__flp+0x1>
+ a54:	e0 93 1e 01 	sts	0x011E, r30	; 0x80011e <__flp>
+ a58:	3d c0       	rjmp	.+122    	; 0xad4 <free+0x10c>
+ a5a:	e9 01       	movw	r28, r18
+ a5c:	fb 83       	std	Y+3, r31	; 0x03
+ a5e:	ea 83       	std	Y+2, r30	; 0x02
+ a60:	49 91       	ld	r20, Y+
+ a62:	59 91       	ld	r21, Y+
+ a64:	c4 0f       	add	r28, r20
+ a66:	d5 1f       	adc	r29, r21
+ a68:	ec 17       	cp	r30, r28
+ a6a:	fd 07       	cpc	r31, r29
+ a6c:	61 f4       	brne	.+24     	; 0xa86 <free+0xbe>
+ a6e:	80 81       	ld	r24, Z
+ a70:	91 81       	ldd	r25, Z+1	; 0x01
+ a72:	84 0f       	add	r24, r20
+ a74:	95 1f       	adc	r25, r21
+ a76:	02 96       	adiw	r24, 0x02	; 2
+ a78:	e9 01       	movw	r28, r18
+ a7a:	99 83       	std	Y+1, r25	; 0x01
+ a7c:	88 83       	st	Y, r24
+ a7e:	82 81       	ldd	r24, Z+2	; 0x02
+ a80:	93 81       	ldd	r25, Z+3	; 0x03
+ a82:	9b 83       	std	Y+3, r25	; 0x03
+ a84:	8a 83       	std	Y+2, r24	; 0x02
+ a86:	e0 e0       	ldi	r30, 0x00	; 0
+ a88:	f0 e0       	ldi	r31, 0x00	; 0
+ a8a:	12 96       	adiw	r26, 0x02	; 2
+ a8c:	8d 91       	ld	r24, X+
+ a8e:	9c 91       	ld	r25, X
+ a90:	13 97       	sbiw	r26, 0x03	; 3
+ a92:	00 97       	sbiw	r24, 0x00	; 0
+ a94:	19 f0       	breq	.+6      	; 0xa9c <free+0xd4>
+ a96:	fd 01       	movw	r30, r26
+ a98:	dc 01       	movw	r26, r24
+ a9a:	f7 cf       	rjmp	.-18     	; 0xa8a <free+0xc2>
+ a9c:	8d 91       	ld	r24, X+
+ a9e:	9c 91       	ld	r25, X
+ aa0:	11 97       	sbiw	r26, 0x01	; 1
+ aa2:	9d 01       	movw	r18, r26
+ aa4:	2e 5f       	subi	r18, 0xFE	; 254
+ aa6:	3f 4f       	sbci	r19, 0xFF	; 255
+ aa8:	82 0f       	add	r24, r18
+ aaa:	93 1f       	adc	r25, r19
+ aac:	20 91 1c 01 	lds	r18, 0x011C	; 0x80011c <__brkval>
+ ab0:	30 91 1d 01 	lds	r19, 0x011D	; 0x80011d <__brkval+0x1>
+ ab4:	28 17       	cp	r18, r24
+ ab6:	39 07       	cpc	r19, r25
+ ab8:	69 f4       	brne	.+26     	; 0xad4 <free+0x10c>
+ aba:	30 97       	sbiw	r30, 0x00	; 0
+ abc:	29 f4       	brne	.+10     	; 0xac8 <free+0x100>
+ abe:	10 92 1f 01 	sts	0x011F, r1	; 0x80011f <__flp+0x1>
+ ac2:	10 92 1e 01 	sts	0x011E, r1	; 0x80011e <__flp>
+ ac6:	02 c0       	rjmp	.+4      	; 0xacc <free+0x104>
+ ac8:	13 82       	std	Z+3, r1	; 0x03
+ aca:	12 82       	std	Z+2, r1	; 0x02
+ acc:	b0 93 1d 01 	sts	0x011D, r27	; 0x80011d <__brkval+0x1>
+ ad0:	a0 93 1c 01 	sts	0x011C, r26	; 0x80011c <__brkval>
+ ad4:	df 91       	pop	r29
+ ad6:	cf 91       	pop	r28
+ ad8:	08 95       	ret
+
+00000ada <__do_global_dtors>:
+ ada:	10 e0       	ldi	r17, 0x00	; 0
+ adc:	c5 e3       	ldi	r28, 0x35	; 53
+ ade:	d0 e0       	ldi	r29, 0x00	; 0
+ ae0:	04 c0       	rjmp	.+8      	; 0xaea <__do_global_dtors+0x10>
+ ae2:	fe 01       	movw	r30, r28
+ ae4:	0e 94 46 04 	call	0x88c	; 0x88c <__tablejump2__>
+ ae8:	21 96       	adiw	r28, 0x01	; 1
+ aea:	c6 33       	cpi	r28, 0x36	; 54
+ aec:	d1 07       	cpc	r29, r17
+ aee:	c9 f7       	brne	.-14     	; 0xae2 <__do_global_dtors+0x8>
+ af0:	f8 94       	cli
+
+00000af2 <__stop_program>:
+ af2:	ff cf       	rjmp	.-2      	; 0xaf2 <__stop_program>
