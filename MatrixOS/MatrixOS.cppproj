@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
-    <ProjectGuid>dce6c7e3-ee26-4d79-826b-08594b9ad897</ProjectGuid>
+    <ProjectGuid>{dcd4f783-e1fc-4874-bd5c-cec88fd9f12f}</ProjectGuid>
     <avrdevice>ATmega168PA</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>LED-Streifenmatrix</AssemblyName>
-    <Name>LED-Streifenmatrix</Name>
-    <RootNamespace>LED-Streifenmatrix</RootNamespace>
+    <AssemblyName>MatrixOS</AssemblyName>
+    <Name>MatrixOS</Name>
+    <RootNamespace>MatrixOS</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -40,55 +40,11 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
-    <avrtool>custom</avrtool>
-    <avrtoolserialnumber />
-    <avrdeviceexpectedsignature>0x1E940B</avrdeviceexpectedsignature>
-    <com_atmel_avrdbg_tool_simulator>
-      <ToolOptions>
-        <InterfaceProperties>
-        </InterfaceProperties>
-        <InterfaceName>
-        </InterfaceName>
-      </ToolOptions>
-      <ToolType>com.atmel.avrdbg.tool.simulator</ToolType>
-      <ToolNumber>
-      </ToolNumber>
-      <ToolName>Simulator</ToolName>
-    </com_atmel_avrdbg_tool_simulator>
-    <avrtoolinterface>
-    </avrtoolinterface>
-    <custom>
-      <ToolOptions>
-        <InterfaceProperties>
-          <IspClock>125000</IspClock>
-        </InterfaceProperties>
-        <InterfaceName>
-        </InterfaceName>
-      </ToolOptions>
-      <ToolType>custom</ToolType>
-      <ToolNumber>
-      </ToolNumber>
-      <ToolName>Custom Programming Tool</ToolName>
-    </custom>
-    <com_atmel_avrdbg_tool_stk500>
-      <ToolOptions>
-        <InterfaceProperties>
-          <IspClock>125000</IspClock>
-        </InterfaceProperties>
-        <InterfaceName>ISP</InterfaceName>
-      </ToolOptions>
-      <ToolType>com.atmel.avrdbg.tool.stk500</ToolType>
-      <ToolNumber>
-      </ToolNumber>
-      <ToolName>STK500</ToolName>
-    </com_atmel_avrdbg_tool_stk500>
-    <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
-    <CustomProgrammingToolCommand>c:\Program Files\Atmel\AVRDude\avrdude.exe -c arduino -p m168pa -P cp210x -V -e -U flash:w:"$(TargetDir)$(TargetName).hex":a</CustomProgrammingToolCommand>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
       <AvrGccCpp>
-  <avrgcc.common.Device>-mmcu=atmega168pa -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega168pa"</avrgcc.common.Device>
+  <avrgcc.common.Device>-mmcu=atmega168pa -B "%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\gcc\dev\atmega168pa"</avrgcc.common.Device>
   <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
   <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
   <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -99,12 +55,11 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>NDEBUG</Value>
-      <Value>F_CPU=16000000UL</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
   <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
@@ -122,7 +77,7 @@
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
     <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
       <Value>../../microLED</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
@@ -143,7 +98,7 @@
   </avrgcccpp.linker.libraries.LibrarySearchPaths>
   <avrgcccpp.assembler.general.IncludePaths>
     <ListValues>
-      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+      <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
     </ListValues>
   </avrgcccpp.assembler.general.IncludePaths>
 </AvrGccCpp>
@@ -152,7 +107,7 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
       <AvrGccCpp>
-        <avrgcc.common.Device>-mmcu=atmega168pa -B "%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega168pa"</avrgcc.common.Device>
+        <avrgcc.common.Device>-mmcu=atmega168pa -B "%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\gcc\dev\atmega168pa"</avrgcc.common.Device>
         <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
         <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
         <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
@@ -163,12 +118,11 @@
         <avrgcc.compiler.symbols.DefSymbols>
           <ListValues>
             <Value>DEBUG</Value>
-            <Value>F_CPU=16000000UL</Value>
           </ListValues>
         </avrgcc.compiler.symbols.DefSymbols>
         <avrgcc.compiler.directories.IncludePaths>
           <ListValues>
-            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
           </ListValues>
         </avrgcc.compiler.directories.IncludePaths>
         <avrgcc.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcc.compiler.optimization.level>
@@ -181,12 +135,11 @@
         <avrgcccpp.compiler.symbols.DefSymbols>
           <ListValues>
             <Value>DEBUG</Value>
-            <Value>F_CPU=16000000UL</Value>
           </ListValues>
         </avrgcccpp.compiler.symbols.DefSymbols>
         <avrgcccpp.compiler.directories.IncludePaths>
           <ListValues>
-            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
           </ListValues>
         </avrgcccpp.compiler.directories.IncludePaths>
         <avrgcccpp.compiler.optimization.level>Optimize debugging experience (-Og)</avrgcccpp.compiler.optimization.level>
@@ -199,14 +152,9 @@
             <Value>libm</Value>
           </ListValues>
         </avrgcccpp.linker.libraries.Libraries>
-        <avrgcccpp.linker.libraries.LibrarySearchPaths>
-          <ListValues>
-            <Value>C:\Program Files\Arduino IDE\resources\app</Value>
-          </ListValues>
-        </avrgcccpp.linker.libraries.LibrarySearchPaths>
         <avrgcccpp.assembler.general.IncludePaths>
           <ListValues>
-            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.7.374\include\</Value>
+            <Value>%24(PackRepoDir)\atmel\ATmega_DFP\2.2.509\include\</Value>
           </ListValues>
         </avrgcccpp.assembler.general.IncludePaths>
         <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
@@ -214,14 +162,33 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="clock.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="custom.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="effects.cpp">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="pinout_atmega168.jpeg">
+    <Compile Include="noise_effects.cpp">
       <SubType>compile</SubType>
-    </None>
+    </Compile>
+    <Compile Include="runningText.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="timerMinim.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="utility.cpp">
+      <SubType>compile</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>

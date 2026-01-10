@@ -18,7 +18,7 @@
 //#include "color.h"
 
 // Ein Byte pro Farbe global im Projekt setzen und Bibliothek laden
-#include "microLED/microLED.h"
+#include <microLED.h>
 
 
 #define SIGNAL_PIN   6	// Signalpin für die NeoPixels
@@ -31,10 +31,7 @@ const int ZEILEN = 30;
 const int SPALTEN = 10;
 const int NUMPIXELS = ZEILEN * SPALTEN; // Popular NeoPixel ring size
 
-// When setting up the NeoPixel library, we tell it how many pixels,
-// and which pin to use to send signals. Note that for older NeoPixel
-// strips you might need to change the third parameter.
-//AdafruitMyPixel strip(NUMPIXELS, SIGNAL_PIN);
+// LED-Band als Matrix initialisieren
 microLED<NUMPIXELS, SIGNAL_PIN, MLED_NO_CLOCK, LED_WS2818, ORDER_GRB, CLI_HIGH> 
 	strip(SPALTEN, ZEILEN, ZIGZAG, RIGHT_TOP, DIR_DOWN);
 
@@ -58,7 +55,8 @@ void blinken()
 int main(void)
 {
 	int lauf = 0;
-	mData farbe;
+	MColor farbe;
+	setupMillis();
 	
 	//  Serial.begin(19200);
 	//pinMode(LED, OUTPUT);
@@ -80,7 +78,7 @@ int main(void)
 	blinken();		// erstes Blinken
 
 	// INITIALIZE NeoPixel strip object (REQUIRED)
-	strip.setBrightness(50);
+	strip.setBrightness(100);
 	strip.fillGradient(0, 29, mBlack, mBlue);
 	strip.fillGradient(30, 59, mGreen, mGray);
 	strip.fillGradient(60, 239, mYellow, mOrange);
@@ -99,19 +97,24 @@ int main(void)
 	
     while (true)
     {
-        strip.set(lauf, mBlack);
-		lauf = (lauf + 1) % NUMPIXELS;
+		strip.fill(mBlack);
+        //strip.set(lauf, mBlack);
+		//lauf = (lauf + 1) % NUMPIXELS;
+		lauf = millis() / 200 % NUMPIXELS;
         strip.fillGradient(lauf, lauf + len/2, mBlack, mRed);
 		strip.fillGradient(lauf + len/2, lauf + len, mRed, mBlack);
 
+		//// Anzeigen und pausieren für nächsten Lauf
+		////Serial.println("Zeige Matrix an");
+		strip.show();   // Send the updated pixel colors to the hardware.
+		_delay_ms(DELAYVAL); // Pause before next pass through loop
+
 		//strip.set(lauf, farbe);
 		//farbe = strip.get(lauf);
-		        
-        // Anzeigen und pausieren für nächsten Lauf
-        //Serial.println("Zeige Matrix an");
-        strip.show();   // Send the updated pixel colors to the hardware.
-        _delay_ms(DELAYVAL); // Pause before next pass through loop
+		//strip.rainbow_loop();
+		//strip.radiation();
         
-		blinken();
+		if (millis() > 10000)
+			blinken();
     }
 }

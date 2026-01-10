@@ -8,7 +8,14 @@ Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "LED-Streifenmatrix", "LED-S
 		{6FAB23FF-95B9-4C63-999C-8201C3B21E5A} = {6FAB23FF-95B9-4C63-999C-8201C3B21E5A}
 	EndProjectSection
 EndProject
-Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Digi-LED-Bibs", "Digi-LED-Bibs\Digi-LED-Bibs.cppproj", "{6FAB23FF-95B9-4C63-999C-8201C3B21E5A}"
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "microLED-Bibel", "microLED\microLED-Bibel.cppproj", "{6FAB23FF-95B9-4C63-999C-8201C3B21E5A}"
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "MatrixOS", "MatrixOS\MatrixOS.cppproj", "{DCD4F783-E1FC-4874-BD5C-CEC88FD9F12F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FAB23FF-95B9-4C63-999C-8201C3B21E5A} = {6FAB23FF-95B9-4C63-999C-8201C3B21E5A}
+	EndProjectSection
+EndProject
+Project("{E66E83B9-2572-4076-B26E-6BE79FF3018A}") = "Treppenlicht", "Treppenlicht\Treppenlicht.cppproj", "{22C79615-FF54-4839-A082-3BE3DA058C6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +31,14 @@ Global
 		{6FAB23FF-95B9-4C63-999C-8201C3B21E5A}.Debug|AVR.Build.0 = Debug|AVR
 		{6FAB23FF-95B9-4C63-999C-8201C3B21E5A}.Release|AVR.ActiveCfg = Release|AVR
 		{6FAB23FF-95B9-4C63-999C-8201C3B21E5A}.Release|AVR.Build.0 = Release|AVR
+		{DCD4F783-E1FC-4874-BD5C-CEC88FD9F12F}.Debug|AVR.ActiveCfg = Debug|AVR
+		{DCD4F783-E1FC-4874-BD5C-CEC88FD9F12F}.Debug|AVR.Build.0 = Debug|AVR
+		{DCD4F783-E1FC-4874-BD5C-CEC88FD9F12F}.Release|AVR.ActiveCfg = Release|AVR
+		{DCD4F783-E1FC-4874-BD5C-CEC88FD9F12F}.Release|AVR.Build.0 = Release|AVR
+		{22C79615-FF54-4839-A082-3BE3DA058C6C}.Debug|AVR.ActiveCfg = Debug|AVR
+		{22C79615-FF54-4839-A082-3BE3DA058C6C}.Debug|AVR.Build.0 = Debug|AVR
+		{22C79615-FF54-4839-A082-3BE3DA058C6C}.Release|AVR.ActiveCfg = Release|AVR
+		{22C79615-FF54-4839-A082-3BE3DA058C6C}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
